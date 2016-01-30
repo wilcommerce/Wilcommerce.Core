@@ -6,7 +6,7 @@ namespace Wilcommerce.Core.Infrastructure
     /// <summary>
     /// Represents a generic repository for the aggregate's persistence
     /// </summary>
-    public interface IRepository
+    public interface IRepository : IDisposable
     {
         /// <summary>
         /// Add an aggregate to the repository
