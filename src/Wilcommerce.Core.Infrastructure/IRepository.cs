@@ -40,6 +40,6 @@ namespace Wilcommerce.Core.Infrastructure
         /// Async method. Saves all the changes made on the aggregate
         /// </summary>
         /// <returns></returns>
-        Task SaveChangesAsyc();
+        Task SaveChangesAsync();
     }
 }
