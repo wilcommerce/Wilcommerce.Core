@@ -1,9 +1,9 @@
 ﻿{
-  "version": "1.0.0-alpha",
+  "version": "0.1.0-alpha",
   "description": "Wilcommerce Core infrastructure classes",
   "authors": [ "Alberto Mori" ],
   "tags": [ "wilcommerce", "ecommerce", "opensource", ".netcore", ".net", "infrastructure" ],
-  "projectUrl": "http://wilcommerce.github.io/Wilcommerce.Core/",
+  "projectUrl": "https://github.com/wilcommerce/Wilcommerce.Core",
   "licenseUrl": "https://github.com/wilcommerce/Wilcommerce.Core/blob/master/LICENSE",
 
   "frameworks": {
