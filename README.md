@@ -6,6 +6,8 @@ It contains a list of projects which composes the core of the project.
 Wilcommerce.Core.Infrastructure is the infrastructure project for Wilcommerce.
 It contains a list of classes and interfaces used for the infrastructure layer for this project.
 
+The latest version of the nuget package is available here https://www.nuget.org/packages/Wilcommerce.Core.Infrastructure/
+
 The elements of this project are:
 - **IAggregateRoot** is the interface which represents an Aggregate root.
 - **ICommand** is the interface which represents a generic command.
