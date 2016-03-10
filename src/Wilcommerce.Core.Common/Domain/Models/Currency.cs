@@ -138,6 +138,11 @@ namespace Wilcommerce.Core.Common.Domain.Models
                 throw new ArgumentException("The currency must be greater than or equal to zero");
             }
 
+            if (firstCurrency.Code != secondCurrency.Code)
+            {
+                throw new ArgumentException("The currency must be of the same type");
+            }
+
             double result = firstCurrency.Amount * secondCurrency.Amount;
             if(result < 0)
             {
@@ -179,6 +184,11 @@ namespace Wilcommerce.Core.Common.Domain.Models
                 throw new ArgumentException("The currency must be greater than to zero");
             }
 
+            if (firstCurrency.Code != secondCurrency.Code)
+            {
+                throw new ArgumentException("The currency must be of the same type");
+            }
+
             double result = firstCurrency.Amount / secondCurrency.Amount;
             if (result < 0)
             {
@@ -189,6 +199,24 @@ namespace Wilcommerce.Core.Common.Domain.Models
             {
                 Code = firstCurrency.Code,
                 Amount = result
+            };
+        }
+        #endregion
+
+        #region Methods
+        /// <summary>
+        /// Calculate the percentage of the current currency
+        /// </summary>
+        /// <param name="percentage">The percentage value</param>
+        /// <returns>The currency calculated</returns>
+        public Currency Percentage(double percentage)
+        {
+            var amount = this.Amount * (percentage / 100.00);
+
+            return new Currency
+            {
+                Code = this.Code,
+                Amount = amount
             };
         }
         #endregion
