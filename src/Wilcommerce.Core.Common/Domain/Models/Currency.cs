@@ -8,12 +8,12 @@ namespace Wilcommerce.Core.Common.Domain.Models
     public class Currency
     {
         /// <summary>
-        /// The currency code
+        /// Get or set the currency code
         /// </summary>
         public string Code { get; set; }
 
         /// <summary>
-        /// The currency amount
+        /// Get or set the currency amount
         /// </summary>
         public double Amount { get; set; }
 
