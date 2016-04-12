@@ -1,0 +1,25 @@
+{
+  "version": "0.1.0-alpha",
+  "description": "Wilcommerce Core common classes",
+  "authors": [ "Alberto Mori" ],
+  "tags": [ "wilcommerce", "ecommerce", "opensource", ".netcore", ".net", "core" ],
+  "projectUrl": "https://github.com/wilcommerce/Wilcommerce.Core",
+  "licenseUrl": "https://github.com/wilcommerce/Wilcommerce.Core/blob/master/LICENSE",
+
+  "frameworks": {
+    "net451": { },
+    "dotnet5.4": {
+      "dependencies": {
+        "Microsoft.CSharp": "4.0.1-beta-23516",
+        "System.Collections": "4.0.11-beta-23516",
+        "System.Linq": "4.0.1-beta-23516",
+        "System.Runtime": "4.0.21-beta-23516",
+        "System.Threading": "4.0.11-beta-23516"
+      }
+    }
+  },
+  "dependencies": {
+    "Newtonsoft.Json": "8.0.3",
+    "Wilcommerce.Core.Infrastructure": "0.1.0-alpha"
+  }
+}

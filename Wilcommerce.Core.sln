@@ -12,6 +12,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Wilcommerce.Core.Infrastructure", "src\Wilcommerce.Core.Infrastructure\Wilcommerce.Core.Infrastructure.xproj", "{DA1D3257-A67D-46B6-A05F-5C19E825ABB8}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Wilcommerce.Core.Common", "src\Wilcommerce.Core.Common\Wilcommerce.Core.Common.xproj", "{DFD71A6F-C170-412F-BAD5-CB19AA0EB85F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{0460C9CF-60CC-4862-A7CC-DCFD60542656}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Wilcommerce.Core.Common.Test", "Wilcommerce.Core.Common.Test\Wilcommerce.Core.Common.Test.xproj", "{B01BF850-CAF4-4529-8995-6C24F6D0A533}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,11 +28,21 @@ Global
 		{DA1D3257-A67D-46B6-A05F-5C19E825ABB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA1D3257-A67D-46B6-A05F-5C19E825ABB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA1D3257-A67D-46B6-A05F-5C19E825ABB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFD71A6F-C170-412F-BAD5-CB19AA0EB85F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFD71A6F-C170-412F-BAD5-CB19AA0EB85F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFD71A6F-C170-412F-BAD5-CB19AA0EB85F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFD71A6F-C170-412F-BAD5-CB19AA0EB85F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B01BF850-CAF4-4529-8995-6C24F6D0A533}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B01BF850-CAF4-4529-8995-6C24F6D0A533}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B01BF850-CAF4-4529-8995-6C24F6D0A533}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B01BF850-CAF4-4529-8995-6C24F6D0A533}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{DA1D3257-A67D-46B6-A05F-5C19E825ABB8} = {46CCE590-AD6F-40F3-898C-287E84D803B1}
+		{DFD71A6F-C170-412F-BAD5-CB19AA0EB85F} = {46CCE590-AD6F-40F3-898C-287E84D803B1}
+		{B01BF850-CAF4-4529-8995-6C24F6D0A533} = {0460C9CF-60CC-4862-A7CC-DCFD60542656}
 	EndGlobalSection
 EndGlobal
