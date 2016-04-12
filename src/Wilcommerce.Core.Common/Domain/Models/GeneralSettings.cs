@@ -63,6 +63,11 @@ namespace Wilcommerce.Core.Common.Domain.Models
         /// Get or set the Seo data
         /// </summary>
         public SeoData Seo { get; set; }
+
+        /// <summary>
+        /// Get or set the root folder for file uploading
+        /// </summary>
+        public string UploadFolder { get; set; }
         #endregion
 
         #region Behaviors
@@ -70,7 +75,7 @@ namespace Wilcommerce.Core.Common.Domain.Models
         /// Disable the site and put it in maintenance mode
         /// </summary>
         /// <param name="message">The message to show</param>
-        public void DisableSite(string message)
+        public virtual void DisableSite(string message)
         {
             if (string.IsNullOrEmpty(message))
             {
@@ -84,7 +89,7 @@ namespace Wilcommerce.Core.Common.Domain.Models
         /// <summary>
         /// Enable the site and disable the maintenance mode
         /// </summary>
-        public void EnableSite()
+        public virtual void EnableSite()
         {
             this.MaintenanceMode = false;
         }

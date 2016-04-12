@@ -209,7 +209,7 @@ namespace Wilcommerce.Core.Common.Domain.Models
         /// </summary>
         /// <param name="percentage">The percentage value</param>
         /// <returns>The currency calculated</returns>
-        public Currency Percentage(double percentage)
+        public virtual Currency Percentage(double percentage)
         {
             var amount = this.Amount * (percentage / 100.00);
 
