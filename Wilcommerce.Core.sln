@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{46CCE590-AD6F-40F3-898C-287E84D803B1}"
 EndProject
@@ -10,13 +10,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		global.json = global.json
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Wilcommerce.Core.Infrastructure", "src\Wilcommerce.Core.Infrastructure\Wilcommerce.Core.Infrastructure.xproj", "{DA1D3257-A67D-46B6-A05F-5C19E825ABB8}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Wilcommerce.Core.Common", "src\Wilcommerce.Core.Common\Wilcommerce.Core.Common.xproj", "{DFD71A6F-C170-412F-BAD5-CB19AA0EB85F}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{0460C9CF-60CC-4862-A7CC-DCFD60542656}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Wilcommerce.Core.Common.Test", "Wilcommerce.Core.Common.Test\Wilcommerce.Core.Common.Test.xproj", "{B01BF850-CAF4-4529-8995-6C24F6D0A533}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Wilcommerce.Core.Infrastructure", "src\Wilcommerce.Core.Infrastructure\Wilcommerce.Core.Infrastructure.xproj", "{AD4A9B0C-A9BB-4167-9DFC-E73C7CC08342}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Wilcommerce.Core.Common", "src\Wilcommerce.Core.Common\Wilcommerce.Core.Common.xproj", "{2FCDEAE8-985B-4535-BEFC-7A517AE99DEC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,25 +24,25 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DA1D3257-A67D-46B6-A05F-5C19E825ABB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DA1D3257-A67D-46B6-A05F-5C19E825ABB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DA1D3257-A67D-46B6-A05F-5C19E825ABB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DA1D3257-A67D-46B6-A05F-5C19E825ABB8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DFD71A6F-C170-412F-BAD5-CB19AA0EB85F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DFD71A6F-C170-412F-BAD5-CB19AA0EB85F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DFD71A6F-C170-412F-BAD5-CB19AA0EB85F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DFD71A6F-C170-412F-BAD5-CB19AA0EB85F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B01BF850-CAF4-4529-8995-6C24F6D0A533}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B01BF850-CAF4-4529-8995-6C24F6D0A533}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B01BF850-CAF4-4529-8995-6C24F6D0A533}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B01BF850-CAF4-4529-8995-6C24F6D0A533}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD4A9B0C-A9BB-4167-9DFC-E73C7CC08342}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD4A9B0C-A9BB-4167-9DFC-E73C7CC08342}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD4A9B0C-A9BB-4167-9DFC-E73C7CC08342}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD4A9B0C-A9BB-4167-9DFC-E73C7CC08342}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FCDEAE8-985B-4535-BEFC-7A517AE99DEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FCDEAE8-985B-4535-BEFC-7A517AE99DEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FCDEAE8-985B-4535-BEFC-7A517AE99DEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FCDEAE8-985B-4535-BEFC-7A517AE99DEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{DA1D3257-A67D-46B6-A05F-5C19E825ABB8} = {46CCE590-AD6F-40F3-898C-287E84D803B1}
-		{DFD71A6F-C170-412F-BAD5-CB19AA0EB85F} = {46CCE590-AD6F-40F3-898C-287E84D803B1}
 		{B01BF850-CAF4-4529-8995-6C24F6D0A533} = {0460C9CF-60CC-4862-A7CC-DCFD60542656}
+		{AD4A9B0C-A9BB-4167-9DFC-E73C7CC08342} = {46CCE590-AD6F-40F3-898C-287E84D803B1}
+		{2FCDEAE8-985B-4535-BEFC-7A517AE99DEC} = {46CCE590-AD6F-40F3-898C-287E84D803B1}
 	EndGlobalSection
 EndGlobal
