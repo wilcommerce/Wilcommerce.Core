@@ -23,6 +23,15 @@ namespace Wilcommerce.Core.Common.Test.Domain.Events
             }
         }
 
+        public class AnotherEvent : DomainEvent
+        {
+            public AnotherEvent()
+                : base()
+            {
+
+            }
+        }
+
         [Fact]
         public void EventWrapper_Should_Throw_ArgumentNullException_If_Event_IsNull()
         {
@@ -33,12 +42,22 @@ namespace Wilcommerce.Core.Common.Test.Domain.Events
         }
 
         [Fact]
+        public void EventWrapper_GetEventData_Should_Throw_ArgumentException_If_EventType_IsNot_The_Same()
+        {
+            var ev = new FakeEvent("value");
+            var wrapper = EventWrapper.Wrap(ev);
+
+            var ex = Assert.Throws<ArgumentException>(() => wrapper.GetEventData(typeof(AnotherEvent)));
+            Assert.Equal("The type does not correspond to the saved type", ex.Message);
+        }
+
+        [Fact]
         public void EventWrapper_Should_Deserialize_FakeEvent()
         {
             var ev = new FakeEvent("value");
             var wrapper = EventWrapper.Wrap(ev);
 
-            var deserialized = wrapper.EventData;
+            var deserialized = wrapper.GetEventData(Type.GetType(wrapper.EventType));
 
             Assert.Equal(typeof(FakeEvent), deserialized.GetType());
             Assert.Equal(ev.ToString(), deserialized.ToString());

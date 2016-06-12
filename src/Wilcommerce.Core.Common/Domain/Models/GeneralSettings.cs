@@ -82,8 +82,8 @@ namespace Wilcommerce.Core.Common.Domain.Models
                 throw new ArgumentNullException("message");
             }
 
-            this.MaintenanceMode = true;
-            this.MaintenanceMessage = message;
+            MaintenanceMode = true;
+            MaintenanceMessage = message;
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace Wilcommerce.Core.Common.Domain.Models
         /// </summary>
         public virtual void EnableSite()
         {
-            this.MaintenanceMode = false;
+            MaintenanceMode = false;
         }
 
         #endregion

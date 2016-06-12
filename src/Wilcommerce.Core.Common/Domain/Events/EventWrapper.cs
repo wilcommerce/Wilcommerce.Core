@@ -20,26 +20,32 @@ namespace Wilcommerce.Core.Common.Domain.Events
         /// <summary>
         /// Get or set the type of the event
         /// </summary>
-        public Type EventType { get; set; }
+        public string EventType { get; set; }
 
         /// <summary>
         /// Get or set the serialized event
         /// </summary>
         public string EventBody { get; set; }
+        #endregion
 
+        #region Methods
         /// <summary>
-        /// Get the deserialized event data
+        /// Get the deserialized event, based on the specified type
         /// </summary>
-        public dynamic EventData
+        /// <param name="eventType">The type of the event to deserialize</param>
+        /// <returns>The deserialized event</returns>
+        public dynamic GetEventData(Type eventType)
         {
-            get
+            if(eventType.ToString() != EventType)
             {
-                var settings = new JsonSerializerSettings();
-                settings.TypeNameHandling = TypeNameHandling.Objects;
-
-                var @event = JsonConvert.DeserializeObject(this.EventBody, this.EventType, settings);
-                return (dynamic)(@event as DomainEvent);
+                throw new ArgumentException("The type does not correspond to the saved type");
             }
+
+            var settings = new JsonSerializerSettings();
+            settings.TypeNameHandling = TypeNameHandling.Objects;
+
+            var @event = JsonConvert.DeserializeObject(EventBody, eventType, settings);
+            return (dynamic)(@event as DomainEvent);
         }
         #endregion
 
@@ -65,7 +71,7 @@ namespace Wilcommerce.Core.Common.Domain.Events
             {
                 Id = Guid.NewGuid(),
                 Timestamp = DateTime.Now,
-                EventType = typeof(TEvent),
+                EventType = typeof(TEvent).ToString(),
                 EventBody = JsonConvert.SerializeObject(@event)
             };
 
