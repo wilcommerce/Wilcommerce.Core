@@ -66,10 +66,10 @@ namespace Wilcommerce.Core.Common.Domain.Models
         /// </summary>
         public virtual void Enable()
         {
-            this.IsActive = true;
-            if(this.DisabledOn != null)
+            IsActive = true;
+            if(DisabledOn != null)
             {
-                this.DisabledOn = null;
+                DisabledOn = null;
             }
         }
 
@@ -78,8 +78,8 @@ namespace Wilcommerce.Core.Common.Domain.Models
         /// </summary>
         public virtual void Disable()
         {
-            this.IsActive = false;
-            this.DisabledOn = DateTime.Now;
+            IsActive = false;
+            DisabledOn = DateTime.Now;
         }
 
         #endregion
