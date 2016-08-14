@@ -1,19 +1,30 @@
 {
-  "version": "0.1.0",
-
   "dependencies": {
-    "NETStandard.Library": "1.5.0-rc2-24027",
+    "NETStandard.Library": "1.6.0",
     "Newtonsoft.Json": "8.0.3",
-    "Wilcommerce.Core.Infrastructure": "0.1.0"
+    "Wilcommerce.Core.Infrastructure": "1.0.0-beta1"
   },
-
   "frameworks": {
-    "netstandard1.5": {
+    "netstandard1.6": {
       "imports": "dnxcore50",
       "dependencies": {
-        "Microsoft.CSharp": "4.0.1-rc2-24027",
-        "System.Dynamic.Runtime": "4.0.11-rc2-24027"
+        "Microsoft.CSharp": "4.0.1",
+        "System.Dynamic.Runtime": "4.0.11"
       }
     }
+  },
+  "version": "1.0.0-beta1",
+  "packOptions": {
+    "iconUrl": "http://www.wilcommerce.com/logo64.png",
+    "licenseUrl": "https://github.com/wilcommerce/Wilcommerce.Core/blob/master/LICENSE",
+    "projectUrl": "https://github.com/wilcommerce/Wilcommerce.Core/",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/wilcommerce/Wilcommerce.Core"
+    },
+    "tags": [ "wilcommerce", "ecommerce", "opensource", ".netcore", ".net", "core" ],
+    "owners": [ "Alberto Mori" ],
+    "releaseNotes": "Upgrade to .NET Core 1.0",
+    "summary": "Wilcommerce Core library"
   }
 }
