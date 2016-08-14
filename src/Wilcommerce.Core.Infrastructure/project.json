@@ -1,13 +1,24 @@
 ﻿{
-  "version": "1.0.0-*",
-
   "dependencies": {
-    "NETStandard.Library": "1.5.0-rc2-24027"
+    "NETStandard.Library": "1.6.0"
   },
-
   "frameworks": {
-    "netstandard1.5": {
+    "netstandard1.6": {
       "imports": "dnxcore50"
     }
+  },
+  "version": "1.0.0-beta1",
+  "packOptions": {
+    "iconUrl": "http://www.wilcommerce.com/logo64.png",
+    "licenseUrl": "https://github.com/wilcommerce/Wilcommerce.Core/blob/master/LICENSE",
+    "projectUrl": "https://github.com/wilcommerce/Wilcommerce.Core/",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/wilcommerce/Wilcommerce.Core"
+    },
+    "tags": [ "wilcommerce", "ecommerce", "opensource", ".netcore", ".net", "infrastructure" ],
+    "owners": [ "Alberto Mori" ],
+    "releaseNotes": "Upgrade to .NET Core 1.0",
+    "summary": "Wilcommerce Infrastructure library"
   }
 }
