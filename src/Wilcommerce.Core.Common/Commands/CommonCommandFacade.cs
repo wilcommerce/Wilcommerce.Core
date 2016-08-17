@@ -12,12 +12,20 @@ namespace Wilcommerce.Core.Common.Commands
 
         public IChangeCurrencyCommandHandler ChangeCurrencyHandler { get; }
 
+        public IChangeLanguageCommandHandler ChangeLanguageHandler { get; }
+
+        public IDisableSiteCommandHandler DisableSiteHandler { get; }
+
         public CommonCommandFacade(
             ISetupSettingsCommandHandler setupSettingsHandler, 
-            IChangeCurrencyCommandHandler changeCurrencyHandler)
+            IChangeCurrencyCommandHandler changeCurrencyHandler,
+            IChangeLanguageCommandHandler changeLanguageHandler,
+            IDisableSiteCommandHandler disableSiteHandler)
         {
             SetupSettingsHandler = setupSettingsHandler;
             ChangeCurrencyHandler = changeCurrencyHandler;
+            ChangeLanguageHandler = changeLanguageHandler;
+            DisableSiteHandler = disableSiteHandler;
         }
 
         public async Task ChangeCurrency(Guid settingsId, string currency)
@@ -37,14 +45,38 @@ namespace Wilcommerce.Core.Common.Commands
             }
         }
 
-        public Task ChangeLanguage(Guid settingsId, string language)
+        public async Task ChangeLanguage(Guid settingsId, string language)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var command = new ChangeLanguageCommand(
+                    settingsId,
+                    language
+                    );
+
+                await ChangeLanguageHandler.Handle(command);
+            }
+            catch 
+            {
+                throw;
+            }
         }
 
-        public Task DisableSite(Guid settingsId, string message)
+        public async Task DisableSite(Guid settingsId, string message)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var command = new DisableSiteCommand(
+                    settingsId,
+                    message
+                    );
+
+                await DisableSiteHandler.Handle(command);
+            }
+            catch 
+            {
+                throw;
+            }
         }
 
         public Task EnableSite(Guid settingsId)

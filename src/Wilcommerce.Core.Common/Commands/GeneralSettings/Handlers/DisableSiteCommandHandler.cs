@@ -1,24 +1,26 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Wilcommerce.Core.Common.Domain.Repository;
 
 namespace Wilcommerce.Core.Common.Commands.GeneralSettings.Handlers
 {
-    public class ChangeCurrencyCommandHandler : Interfaces.IChangeCurrencyCommandHandler
+    public class DisableSiteCommandHandler : Interfaces.IDisableSiteCommandHandler
     {
         public IRepository Repository { get; }
 
-        public ChangeCurrencyCommandHandler(IRepository repository)
+        public DisableSiteCommandHandler(IRepository repository)
         {
             Repository = repository;
         }
 
-        public async Task Handle(ChangeCurrencyCommand command)
+        public async Task Handle(DisableSiteCommand command)
         {
             try
             {
                 var settings = await Repository.GetByKeyAsync<Domain.Models.GeneralSettings>(command.SettingsId);
-                settings.CurrentCurrency = command.Currency;
+                settings.DisableSite(command.Message);
 
                 await Repository.SaveChangesAsync();
             }
