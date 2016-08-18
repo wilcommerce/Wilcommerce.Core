@@ -20,13 +20,16 @@ namespace Wilcommerce.Core.Common.Commands
 
         public ISetupFaviconCommandHandler SetupFaviconHandler { get; }
 
+        public ISetupSiteLogoCommandHandler SetupSiteLogoHandler { get; }
+
         public CommonCommandFacade(
             ISetupSettingsCommandHandler setupSettingsHandler, 
             IChangeCurrencyCommandHandler changeCurrencyHandler,
             IChangeLanguageCommandHandler changeLanguageHandler,
             IDisableSiteCommandHandler disableSiteHandler,
             IEnableSiteCommandHandler enableSiteHandler,
-            ISetupFaviconCommandHandler setupFaviconHandler)
+            ISetupFaviconCommandHandler setupFaviconHandler,
+            ISetupSiteLogoCommandHandler setupSiteLogoHandler)
         {
             SetupSettingsHandler = setupSettingsHandler;
             ChangeCurrencyHandler = changeCurrencyHandler;
@@ -34,6 +37,7 @@ namespace Wilcommerce.Core.Common.Commands
             DisableSiteHandler = disableSiteHandler;
             EnableSiteHandler = enableSiteHandler;
             SetupFaviconHandler = setupFaviconHandler;
+            SetupSiteLogoHandler = setupSiteLogoHandler;
         }
 
         public async Task ChangeCurrency(Guid settingsId, string currency)
@@ -141,12 +145,34 @@ namespace Wilcommerce.Core.Common.Commands
             }
         }
 
-        public Task SetupSiteLogo(Guid settingsId, Image siteLogo)
+        public async Task SetupSiteLogo(Guid settingsId, Image siteLogo)
+        {
+            try
+            {
+                var command = new SetupSiteLogoCommand(
+                    settingsId,
+                    siteLogo
+                    );
+
+                await SetupSiteLogoHandler.Handle(command);
+            }
+            catch 
+            {
+                throw;
+            }
+        }
+
+        public Task SetupUploadFolder(Guid settingsId, string uploadFolder)
         {
             throw new NotImplementedException();
         }
 
-        public Task SetupUploadFolder(Guid settingsId, string uploadFolder)
+        public Task ChangeEmail(Guid settingsId, string email)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task ChangeSiteName(Guid settingsId, string siteName)
         {
             throw new NotImplementedException();
         }

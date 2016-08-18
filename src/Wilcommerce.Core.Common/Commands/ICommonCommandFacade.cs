@@ -37,5 +37,9 @@ namespace Wilcommerce.Core.Common.Commands
         Task ChangeLanguage(Guid settingsId, string language);
 
         Task ChangeCurrency(Guid settingsId, string currency);
+
+        Task ChangeEmail(Guid settingsId, string email);
+
+        Task ChangeSiteName(Guid settingsId, string siteName);
     }
 }

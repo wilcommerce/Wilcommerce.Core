@@ -20,7 +20,7 @@ namespace Wilcommerce.Core.Common.Commands.GeneralSettings.Handlers
             try
             {
                 var settings = await Repository.GetByKeyAsync<Domain.Models.GeneralSettings>(command.SettingsId);
-                settings.Favicon = command.Favicon;
+                settings.SetFavicon(command.Favicon);
 
                 await Repository.SaveChangesAsync();
             }
