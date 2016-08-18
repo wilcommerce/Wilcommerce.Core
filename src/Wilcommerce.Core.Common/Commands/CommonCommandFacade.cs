@@ -16,16 +16,24 @@ namespace Wilcommerce.Core.Common.Commands
 
         public IDisableSiteCommandHandler DisableSiteHandler { get; }
 
+        public IEnableSiteCommandHandler EnableSiteHandler { get; }
+
+        public ISetupFaviconCommandHandler SetupFaviconHandler { get; }
+
         public CommonCommandFacade(
             ISetupSettingsCommandHandler setupSettingsHandler, 
             IChangeCurrencyCommandHandler changeCurrencyHandler,
             IChangeLanguageCommandHandler changeLanguageHandler,
-            IDisableSiteCommandHandler disableSiteHandler)
+            IDisableSiteCommandHandler disableSiteHandler,
+            IEnableSiteCommandHandler enableSiteHandler,
+            ISetupFaviconCommandHandler setupFaviconHandler)
         {
             SetupSettingsHandler = setupSettingsHandler;
             ChangeCurrencyHandler = changeCurrencyHandler;
             ChangeLanguageHandler = changeLanguageHandler;
             DisableSiteHandler = disableSiteHandler;
+            EnableSiteHandler = enableSiteHandler;
+            SetupFaviconHandler = setupFaviconHandler;
         }
 
         public async Task ChangeCurrency(Guid settingsId, string currency)
@@ -79,14 +87,34 @@ namespace Wilcommerce.Core.Common.Commands
             }
         }
 
-        public Task EnableSite(Guid settingsId)
+        public async Task EnableSite(Guid settingsId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var command = new EnableSiteCommand(settingsId);
+                await EnableSiteHandler.Handle(command);
+            }
+            catch 
+            {
+                throw;
+            }
         }
 
-        public Task SetupFavicon(Guid settingsId, Image favicon)
+        public async Task SetupFavicon(Guid settingsId, Image favicon)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var command = new SetupFaviconCommand(
+                    settingsId,
+                    favicon
+                    );
+
+                await SetupFaviconHandler.Handle(command);
+            }
+            catch 
+            {
+                throw;
+            }
         }
 
         public Task SetupSeoData(Guid settingsId, string title, string description, string keywords, string ogTitle, string ogType, string ogImage, string ogUrl, string ogAudio, string ogDescription, string ogDeterminer, string ogLocale, string ogLocaleAlternate, string ogSiteName, string ogVideo)

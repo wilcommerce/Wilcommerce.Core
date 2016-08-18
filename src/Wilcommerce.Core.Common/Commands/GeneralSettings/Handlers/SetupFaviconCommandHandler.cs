@@ -1,23 +1,26 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Wilcommerce.Core.Common.Domain.Repository;
 
 namespace Wilcommerce.Core.Common.Commands.GeneralSettings.Handlers
 {
-    public class ChangeCurrencyCommandHandler : Interfaces.IChangeCurrencyCommandHandler
+    public class SetupFaviconCommandHandler : Interfaces.ISetupFaviconCommandHandler
     {
         public IRepository Repository { get; }
 
-        public ChangeCurrencyCommandHandler(IRepository repository)
+        public SetupFaviconCommandHandler(IRepository repository)
         {
             Repository = repository;
         }
 
-        public async Task Handle(ChangeCurrencyCommand command)
+        public async Task Handle(SetupFaviconCommand command)
         {
             try
             {
                 var settings = await Repository.GetByKeyAsync<Domain.Models.GeneralSettings>(command.SettingsId);
-                settings.CurrentCurrency = command.Currency;
+                settings.Favicon = command.Favicon;
 
                 await Repository.SaveChangesAsync();
             }
