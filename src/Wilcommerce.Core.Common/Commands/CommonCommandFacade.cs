@@ -22,6 +22,14 @@ namespace Wilcommerce.Core.Common.Commands
 
         public ISetupSiteLogoCommandHandler SetupSiteLogoHandler { get; }
 
+        public ISetupUploadFolderCommandHandler SetupUploadFolderHandler { get; }
+
+        public IChangeEmailCommandHandler ChangeEmailHandler { get; }
+
+        public IChangeSiteNameCommandHandler ChangeSiteNameHandler { get; }
+
+        public ISetupSeoDataCommandHandler SetSeoDataHandler { get; }
+
         public CommonCommandFacade(
             ISetupSettingsCommandHandler setupSettingsHandler, 
             IChangeCurrencyCommandHandler changeCurrencyHandler,
@@ -29,7 +37,11 @@ namespace Wilcommerce.Core.Common.Commands
             IDisableSiteCommandHandler disableSiteHandler,
             IEnableSiteCommandHandler enableSiteHandler,
             ISetupFaviconCommandHandler setupFaviconHandler,
-            ISetupSiteLogoCommandHandler setupSiteLogoHandler)
+            ISetupSiteLogoCommandHandler setupSiteLogoHandler,
+            ISetupUploadFolderCommandHandler setupUploadFolderHandler,
+            IChangeEmailCommandHandler changeEmailHandler,
+            IChangeSiteNameCommandHandler changeSiteNameHandler,
+            ISetupSeoDataCommandHandler seoDataHandler)
         {
             SetupSettingsHandler = setupSettingsHandler;
             ChangeCurrencyHandler = changeCurrencyHandler;
@@ -38,6 +50,10 @@ namespace Wilcommerce.Core.Common.Commands
             EnableSiteHandler = enableSiteHandler;
             SetupFaviconHandler = setupFaviconHandler;
             SetupSiteLogoHandler = setupSiteLogoHandler;
+            SetupUploadFolderHandler = SetupUploadFolderHandler;
+            ChangeEmailHandler = changeEmailHandler;
+            ChangeSiteNameHandler = changeSiteNameHandler;
+            SetSeoDataHandler = seoDataHandler;
         }
 
         public async Task ChangeCurrency(Guid settingsId, string currency)
@@ -121,9 +137,39 @@ namespace Wilcommerce.Core.Common.Commands
             }
         }
 
-        public Task SetupSeoData(Guid settingsId, string title, string description, string keywords, string ogTitle, string ogType, string ogImage, string ogUrl, string ogAudio, string ogDescription, string ogDeterminer, string ogLocale, string ogLocaleAlternate, string ogSiteName, string ogVideo)
+        public async Task SetupSeoData(Guid settingsId, string title, string description, string keywords, string ogTitle, string ogType, string ogImage, string ogUrl, string ogAudio, string ogDescription, string ogDeterminer, string ogLocale, string ogLocaleAlternate, string ogSiteName, string ogVideo)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var seo = new SeoData
+                {
+                    Title = title,
+                    Description = description,
+                    Keywords = keywords,
+                    OgTitle = ogTitle,
+                    OgType = ogType,
+                    OgImage = ogImage,
+                    OgUrl = ogUrl,
+                    OgAudio = ogAudio,
+                    OgDescription = ogDescription,
+                    OgDeterminer = ogDeterminer,
+                    OgLocale = ogLocale,
+                    OgLocaleAlternate = ogLocaleAlternate,
+                    OgSiteName = ogSiteName,
+                    OgVideo = ogVideo
+                };
+
+                var command = new SetupSeoDataCommand(
+                    settingsId,
+                    seo
+                    );
+
+                await SetSeoDataHandler.Handle(command);
+            }
+            catch 
+            {
+                throw;
+            }
         }
 
         public async Task SetupSettings(string siteName, string language, string currency, string email)
@@ -162,19 +208,55 @@ namespace Wilcommerce.Core.Common.Commands
             }
         }
 
-        public Task SetupUploadFolder(Guid settingsId, string uploadFolder)
+        public async Task SetupUploadFolder(Guid settingsId, string uploadFolder)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var command = new SetupUploadFolderCommand(
+                    settingsId,
+                    uploadFolder
+                    );
+
+                await SetupUploadFolderHandler.Handle(command);
+            }
+            catch 
+            {
+                throw;
+            }
         }
 
-        public Task ChangeEmail(Guid settingsId, string email)
+        public async Task ChangeEmail(Guid settingsId, string email)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var command = new ChangeEmailCommand(
+                    settingsId,
+                    email
+                    );
+
+                await ChangeEmailHandler.Handle(command);
+            }
+            catch 
+            {
+                throw;
+            }
         }
 
-        public Task ChangeSiteName(Guid settingsId, string siteName)
+        public async Task ChangeSiteName(Guid settingsId, string siteName)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var command = new ChangeSiteNameCommand(
+                    settingsId,
+                    siteName
+                    );
+
+                await ChangeSiteNameHandler.Handle(command);
+            }
+            catch 
+            {
+                throw;
+            }
         }
     }
 }
