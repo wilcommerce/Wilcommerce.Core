@@ -151,5 +151,63 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
             Assert.Equal(false, user.IsActive);
             Assert.Equal(DateTime.Now.ToString("yyyy-MM-dd HH:mm"), ((DateTime)user.DisabledOn).ToString("yyyy-MM-dd HH:mm"));
         }
+
+        [Theory]
+        [InlineData("")]
+        [InlineData(null)]
+        public void ChangeName_Should_Throw_ArgumentNullException_If_Name_IsEmpty(string value)
+        {
+            var user = User.CreateAsAdministrator(
+                "Admin",
+                "admin",
+                "admin"
+                );
+
+            var ex = Assert.Throws<ArgumentNullException>(() => user.ChangeName(value));
+            Assert.Equal("name", ex.ParamName);
+        }
+
+        [Theory]
+        [InlineData("")]
+        [InlineData(null)]
+        public void ChangeEmail_Should_Throw_ArgumentNullException_If_Email_IsEmpty(string value)
+        {
+            var user = User.CreateAsAdministrator(
+                "Admin",
+                "admin",
+                "admin"
+                );
+
+            var ex = Assert.Throws<ArgumentNullException>(() => user.ChangeEmail(value));
+            Assert.Equal("email", ex.ParamName);
+        }
+
+        [Theory]
+        [InlineData("")]
+        [InlineData(null)]
+        public void ChangePassword_Should_Throw_ArgumentNullException_If_Password_IsEmpty(string value)
+        {
+            var user = User.CreateAsAdministrator(
+                "Admin",
+                "admin",
+                "admin"
+                );
+
+            var ex = Assert.Throws<ArgumentNullException>(() => user.ChangePassword(value));
+            Assert.Equal("password", ex.ParamName);
+        }
+
+        [Fact]
+        public void SetProfileImage_Should_Throw_ArgumentNullException_If_Image_IsNull()
+        {
+            var user = User.CreateAsAdministrator(
+                "Admin",
+                "admin",
+                "admin"
+                );
+
+            var ex = Assert.Throws<ArgumentNullException>(() => user.SetProfileImage(null));
+            Assert.Equal("profile image", ex.ParamName);
+        }
     }
 }
