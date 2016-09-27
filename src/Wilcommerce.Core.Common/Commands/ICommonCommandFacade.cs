@@ -9,6 +9,7 @@ namespace Wilcommerce.Core.Common.Commands
     /// </summary>
     public interface ICommonCommandFacade
     {
+        #region Settings Commands
         /// <summary>
         /// Setup the main settings informations
         /// </summary>
@@ -124,5 +125,31 @@ namespace Wilcommerce.Core.Common.Commands
         /// <param name="siteName">The site's name to set</param>
         /// <returns></returns>
         Task ChangeSiteName(Guid settingsId, string siteName);
+        #endregion
+
+        #region User Commands
+        /// <summary>
+        /// Create a new administrator user
+        /// </summary>
+        /// <param name="name">The user's name</param>
+        /// <param name="username">The user's email</param>
+        /// <param name="password">The user's password</param>
+        /// <returns></returns>
+        Task CreateNewAdministrator(string name, string email, string password);
+
+        Task EnableUser(Guid userId);
+
+        Task DisableUser(Guid userId);
+
+        Task ChangeUserName(Guid userId, string name);
+
+        Task ChangeUserEmail(Guid userId, string email);
+
+        Task ChangeUserPassword(Guid userId, string password);
+
+        Task ChangeUserRole(Guid userId, Domain.Models.User.Roles role);
+
+        Task SetProfileImage(Guid userId, Image image);
+        #endregion
     }
 }

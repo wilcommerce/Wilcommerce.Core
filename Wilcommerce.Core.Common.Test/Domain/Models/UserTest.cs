@@ -15,7 +15,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
         {
             var ex = Assert.Throws<ArgumentNullException>(() => User.CreateAsAdministrator(
                 value,
-                "admin",
+                "admin@email.com",
                 "admin"
                 ));
 
@@ -25,7 +25,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
         [Theory]
         [InlineData(null)]
         [InlineData("")]
-        public void AdministratorFactory_Should_Throw_ArgumentNull_Exception_If_Username_IsEmpty(string value)
+        public void AdministratorFactory_Should_Throw_ArgumentNull_Exception_If_Email_IsEmpty(string value)
         {
             var ex = Assert.Throws<ArgumentNullException>(() => User.CreateAsAdministrator(
                 "Administrator",
@@ -33,7 +33,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
                 "admin"
                 ));
 
-            Assert.Equal("username", ex.ParamName);
+            Assert.Equal("email", ex.ParamName);
         }
 
         [Theory]
@@ -43,7 +43,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
         {
             var ex = Assert.Throws<ArgumentNullException>(() => User.CreateAsAdministrator(
                 "Administrator",
-                "admin",
+                "admin@email.com",
                 value
                 ));
 
@@ -55,7 +55,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
         {
             var user = User.CreateAsAdministrator(
                 "Administrator",
-                "admin",
+                "admin@email.com",
                 "admin"
                 );
 
@@ -73,7 +73,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
         {
             var ex = Assert.Throws<ArgumentNullException>(() => User.CreateAsCustomer(
                 value,
-                "customer",
+                "customer@email.com",
                 "customer"
                 ));
 
@@ -83,7 +83,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
         [Theory]
         [InlineData(null)]
         [InlineData("")]
-        public void CustomerFactory_Should_Throw_ArgumentNull_Exception_If_Username_IsEmpty(string value)
+        public void CustomerFactory_Should_Throw_ArgumentNull_Exception_If_Email_IsEmpty(string value)
         {
             var ex = Assert.Throws<ArgumentNullException>(() => User.CreateAsCustomer(
                 "Customer",
@@ -91,7 +91,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
                 "customer"
                 ));
 
-            Assert.Equal("username", ex.ParamName);
+            Assert.Equal("email", ex.ParamName);
         }
 
         [Theory]
@@ -101,7 +101,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
         {
             var ex = Assert.Throws<ArgumentNullException>(() => User.CreateAsCustomer(
                 "Customer",
-                "customer",
+                "customer@email.com",
                 value
                 ));
 
@@ -113,7 +113,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
         {
             var user = User.CreateAsCustomer(
                 "Customer",
-                "customer",
+                "customer@email.com",
                 "customer"
                 );
 
@@ -127,7 +127,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
         {
             var user = User.CreateAsAdministrator(
                 "Admin",
-                "admin",
+                "admin@email.com",
                 "admin"
                 );
 
@@ -142,7 +142,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
         {
             var user = User.CreateAsAdministrator(
                 "Admin",
-                "admin",
+                "admin@email.com",
                 "admin"
                 );
 
@@ -159,7 +159,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
         {
             var user = User.CreateAsAdministrator(
                 "Admin",
-                "admin",
+                "admin@email.com",
                 "admin"
                 );
 
@@ -174,7 +174,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
         {
             var user = User.CreateAsAdministrator(
                 "Admin",
-                "admin",
+                "admin@email.com",
                 "admin"
                 );
 
@@ -189,7 +189,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
         {
             var user = User.CreateAsAdministrator(
                 "Admin",
-                "admin",
+                "admin@email.com",
                 "admin"
                 );
 
@@ -202,7 +202,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
         {
             var user = User.CreateAsAdministrator(
                 "Admin",
-                "admin",
+                "admin@email.com",
                 "admin"
                 );
 

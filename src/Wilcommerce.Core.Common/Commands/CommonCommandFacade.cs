@@ -2,6 +2,8 @@
 using System.Threading.Tasks;
 using Wilcommerce.Core.Common.Commands.GeneralSettings;
 using Wilcommerce.Core.Common.Commands.GeneralSettings.Handlers.Interfaces;
+using Wilcommerce.Core.Common.Commands.User;
+using Wilcommerce.Core.Common.Commands.User.Handlers.Interfaces;
 using Wilcommerce.Core.Common.Domain.Models;
 
 namespace Wilcommerce.Core.Common.Commands
@@ -33,6 +35,8 @@ namespace Wilcommerce.Core.Common.Commands
 
         public ISetupSeoDataCommandHandler SetSeoDataHandler { get; }
 
+        public ICreateNewAdministratorCommandHandler CreateAdministratorHandler { get; }
+
         public CommonCommandFacade(
             ISetupSettingsCommandHandler setupSettingsHandler, 
             IChangeCurrencyCommandHandler changeCurrencyHandler,
@@ -44,7 +48,8 @@ namespace Wilcommerce.Core.Common.Commands
             ISetupUploadFolderCommandHandler setupUploadFolderHandler,
             IChangeEmailCommandHandler changeEmailHandler,
             IChangeSiteNameCommandHandler changeSiteNameHandler,
-            ISetupSeoDataCommandHandler seoDataHandler)
+            ISetupSeoDataCommandHandler seoDataHandler,
+            ICreateNewAdministratorCommandHandler createAdministratorHandler)
         {
             SetupSettingsHandler = setupSettingsHandler;
             ChangeCurrencyHandler = changeCurrencyHandler;
@@ -57,6 +62,7 @@ namespace Wilcommerce.Core.Common.Commands
             ChangeEmailHandler = changeEmailHandler;
             ChangeSiteNameHandler = changeSiteNameHandler;
             SetSeoDataHandler = seoDataHandler;
+            CreateAdministratorHandler = createAdministratorHandler;
         }
 
         /// <summary>
@@ -340,6 +346,59 @@ namespace Wilcommerce.Core.Common.Commands
             {
                 throw;
             }
+        }
+
+        public async Task CreateNewAdministrator(string name, string email, string password)
+        {
+            try
+            {
+                var command = new CreateNewAdministratorCommand(
+                    name,
+                    email,
+                    password
+                    );
+
+                await CreateAdministratorHandler.Handle(command);
+            }
+            catch 
+            {
+                throw;
+            }
+        }
+
+        public Task EnableUser(Guid userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DisableUser(Guid userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task ChangeUserName(Guid userId, string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task ChangeUserEmail(Guid userId, string email)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task ChangeUserPassword(Guid userId, string password)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task ChangeUserRole(Guid userId, Domain.Models.User.Roles role)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task SetProfileImage(Guid userId, Image image)
+        {
+            throw new NotImplementedException();
         }
     }
 }
