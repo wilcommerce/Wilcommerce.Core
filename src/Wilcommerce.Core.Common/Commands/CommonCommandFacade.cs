@@ -37,6 +37,12 @@ namespace Wilcommerce.Core.Common.Commands
 
         public ICreateNewAdministratorCommandHandler CreateAdministratorHandler { get; }
 
+        public IEnableUserCommandHandler EnableUserHandler { get; }
+
+        public IDisableUserCommandHandler DisableUserHandler { get; }
+
+        public IChangeUserNameCommandHandler ChangeUserNameHandler { get; }
+
         public CommonCommandFacade(
             ISetupSettingsCommandHandler setupSettingsHandler, 
             IChangeCurrencyCommandHandler changeCurrencyHandler,
@@ -49,7 +55,10 @@ namespace Wilcommerce.Core.Common.Commands
             IChangeEmailCommandHandler changeEmailHandler,
             IChangeSiteNameCommandHandler changeSiteNameHandler,
             ISetupSeoDataCommandHandler seoDataHandler,
-            ICreateNewAdministratorCommandHandler createAdministratorHandler)
+            ICreateNewAdministratorCommandHandler createAdministratorHandler,
+            IEnableUserCommandHandler enableUserHandler,
+            IDisableUserCommandHandler disableUserHandler,
+            IChangeUserNameCommandHandler changeUserNameHandler)
         {
             SetupSettingsHandler = setupSettingsHandler;
             ChangeCurrencyHandler = changeCurrencyHandler;
@@ -63,6 +72,9 @@ namespace Wilcommerce.Core.Common.Commands
             ChangeSiteNameHandler = changeSiteNameHandler;
             SetSeoDataHandler = seoDataHandler;
             CreateAdministratorHandler = createAdministratorHandler;
+            EnableUserHandler = enableUserHandler;
+            DisableUserHandler = disableUserHandler;
+            ChangeUserNameHandler = changeUserNameHandler;
         }
 
         /// <summary>
@@ -366,19 +378,43 @@ namespace Wilcommerce.Core.Common.Commands
             }
         }
 
-        public Task EnableUser(Guid userId)
+        public async Task EnableUser(Guid userId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var command = new EnableUserCommand(userId);
+                await EnableUserHandler.Handle(command);
+            }
+            catch 
+            {
+                throw;
+            }
         }
 
-        public Task DisableUser(Guid userId)
+        public async Task DisableUser(Guid userId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var command = new DisableUserCommand(userId);
+                await DisableUserHandler.Handle(command);
+            }
+            catch 
+            {
+                throw;
+            }
         }
 
-        public Task ChangeUserName(Guid userId, string name)
+        public async Task ChangeUserName(Guid userId, string name)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var command = new ChangeUserNameCommand(userId, name);
+                await ChangeUserNameHandler.Handle(command);
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         public Task ChangeUserEmail(Guid userId, string email)
