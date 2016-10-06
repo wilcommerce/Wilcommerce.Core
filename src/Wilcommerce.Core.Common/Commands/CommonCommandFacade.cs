@@ -43,6 +43,14 @@ namespace Wilcommerce.Core.Common.Commands
 
         public IChangeUserNameCommandHandler ChangeUserNameHandler { get; }
 
+        public IChangeUserEmailCommandHandler ChangeUserEmailHandler { get; }
+
+        public IChangeUserPasswordCommandHandler ChangeUserPasswordHandler { get; }
+
+        public IChangeUserRoleCommandHandler ChangeUserRoleHandler { get; }
+
+        public ISetUserProfileCommandHandler SetUserProfileHandler { get; }
+
         public CommonCommandFacade(
             ISetupSettingsCommandHandler setupSettingsHandler, 
             IChangeCurrencyCommandHandler changeCurrencyHandler,
@@ -58,7 +66,11 @@ namespace Wilcommerce.Core.Common.Commands
             ICreateNewAdministratorCommandHandler createAdministratorHandler,
             IEnableUserCommandHandler enableUserHandler,
             IDisableUserCommandHandler disableUserHandler,
-            IChangeUserNameCommandHandler changeUserNameHandler)
+            IChangeUserNameCommandHandler changeUserNameHandler,
+            IChangeUserEmailCommandHandler changeUserEmailHandler,
+            IChangeUserPasswordCommandHandler changeUserPasswordHandler,
+            IChangeUserRoleCommandHandler changeUserRoleHandler,
+            ISetUserProfileCommandHandler setUserProfileHandler)
         {
             SetupSettingsHandler = setupSettingsHandler;
             ChangeCurrencyHandler = changeCurrencyHandler;
@@ -75,6 +87,10 @@ namespace Wilcommerce.Core.Common.Commands
             EnableUserHandler = enableUserHandler;
             DisableUserHandler = disableUserHandler;
             ChangeUserNameHandler = changeUserNameHandler;
+            ChangeUserEmailHandler = changeUserEmailHandler;
+            ChangeUserPasswordHandler = changeUserPasswordHandler;
+            ChangeUserRoleHandler = changeUserRoleHandler;
+            SetUserProfileHandler = setUserProfileHandler;
         }
 
         /// <summary>
@@ -417,24 +433,56 @@ namespace Wilcommerce.Core.Common.Commands
             }
         }
 
-        public Task ChangeUserEmail(Guid userId, string email)
+        public async Task ChangeUserEmail(Guid userId, string email)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var command = new ChangeUserEmailCommand(userId, email);
+                await ChangeUserEmailHandler.Handle(command);
+            }
+            catch 
+            {
+                throw;
+            }
         }
 
-        public Task ChangeUserPassword(Guid userId, string password)
+        public async Task ChangeUserPassword(Guid userId, string password)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var command = new ChangeUserPasswordCommand(userId, password);
+                await ChangeUserPasswordHandler.Handle(command);
+            }
+            catch 
+            {
+                throw;
+            }
         }
 
-        public Task ChangeUserRole(Guid userId, Domain.Models.User.Roles role)
+        public async Task ChangeUserRole(Guid userId, Domain.Models.User.Roles role)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var command = new ChangeUserRoleCommand(userId, role);
+                await ChangeUserRoleHandler.Handle(command);
+            }
+            catch 
+            {
+                throw;
+            }
         }
 
-        public Task SetProfileImage(Guid userId, Image image)
+        public async Task SetProfileImage(Guid userId, Image image)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var command = new SetUserProfileCommand(userId, image);
+                await SetUserProfileHandler.Handle(command);
+            }
+            catch 
+            {
+                throw;
+            }
         }
     }
 }
