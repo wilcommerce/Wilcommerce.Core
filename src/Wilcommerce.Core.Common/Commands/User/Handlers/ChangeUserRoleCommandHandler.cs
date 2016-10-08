@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Wilcommerce.Core.Common.Domain.Repository;
+using Wilcommerce.Core.Common.Events.User;
 
 namespace Wilcommerce.Core.Common.Commands.User.Handlers
 {
@@ -10,9 +9,12 @@ namespace Wilcommerce.Core.Common.Commands.User.Handlers
     {
         public IRepository Repository { get; }
 
-        public ChangeUserRoleCommandHandler(IRepository repository)
+        public Infrastructure.IEventBus EventBus { get; }
+
+        public ChangeUserRoleCommandHandler(IRepository repository, Infrastructure.IEventBus eventBus)
         {
             Repository = repository;
+            EventBus = eventBus;
         }
 
         public async Task Handle(ChangeUserRoleCommand command)
@@ -23,9 +25,15 @@ namespace Wilcommerce.Core.Common.Commands.User.Handlers
                 user.ChangeRole(command.Role);
 
                 await Repository.SaveChangesAsync();
+
+                var @event = new UserRoleChangedEvent(command.UserId, command.Role);
+                EventBus.RaiseEvent(@event);
             }
-            catch
+            catch (Exception ex)
             {
+                var @event = new UserRoleNotChangedEvent(command.UserId, command.Role, ex.Message);
+                EventBus.RaiseEvent(@event);
+
                 throw;
             }
         }

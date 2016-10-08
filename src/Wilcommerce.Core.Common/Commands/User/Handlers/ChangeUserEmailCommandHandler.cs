@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Wilcommerce.Core.Common.Domain.Repository;
+using Wilcommerce.Core.Common.Events.User;
 
 namespace Wilcommerce.Core.Common.Commands.User.Handlers
 {
@@ -10,9 +9,12 @@ namespace Wilcommerce.Core.Common.Commands.User.Handlers
     {
         public IRepository Repository { get; }
 
-        public ChangeUserEmailCommandHandler(IRepository repository)
+        public Infrastructure.IEventBus EventBus { get; }
+
+        public ChangeUserEmailCommandHandler(IRepository repository, Infrastructure.IEventBus eventBus)
         {
             Repository = repository;
+            EventBus = eventBus;
         }
 
         public async Task Handle(ChangeUserEmailCommand command)
@@ -23,9 +25,15 @@ namespace Wilcommerce.Core.Common.Commands.User.Handlers
                 user.ChangeEmail(command.Email);
 
                 await Repository.SaveChangesAsync();
+
+                var @event = new UserEmailChangedEvent(command.UserId, command.Email);
+                EventBus.RaiseEvent(@event);
             }
-            catch 
+            catch (Exception ex)
             {
+                var @event = new UserEmailNotChangedEvent(command.UserId, command.Email, ex.Message);
+                EventBus.RaiseEvent(@event);
+
                 throw;
             }
         }

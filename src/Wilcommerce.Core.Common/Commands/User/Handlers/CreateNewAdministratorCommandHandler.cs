@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Wilcommerce.Core.Common.Domain.Repository;
+using Wilcommerce.Core.Common.Events.User;
 
 namespace Wilcommerce.Core.Common.Commands.User.Handlers
 {
@@ -8,9 +9,12 @@ namespace Wilcommerce.Core.Common.Commands.User.Handlers
     {
         public IRepository Repository { get; }
 
-        public CreateNewAdministratorCommandHandler(IRepository repository)
+        public Infrastructure.IEventBus EventBus { get; }
+
+        public CreateNewAdministratorCommandHandler(IRepository repository, Infrastructure.IEventBus eventBus)
         {
             Repository = repository;
+            EventBus = eventBus;
         }
 
         public async Task Handle(CreateNewAdministratorCommand command)
@@ -25,9 +29,25 @@ namespace Wilcommerce.Core.Common.Commands.User.Handlers
 
                 Repository.Add(administrator);
                 await Repository.SaveChangesAsync();
+
+                var @event = new NewAdministratorCreatedEvent(
+                    administrator.Id,
+                    administrator.Name,
+                    administrator.Email
+                    );
+
+                EventBus.RaiseEvent(@event);
             }
-            catch
+            catch (Exception ex)
             {
+                var @event = new AdministratorNotCreatedEvent(
+                    command.Name,
+                    command.Email,
+                    ex.Message
+                    );
+
+                EventBus.RaiseEvent(@event);
+
                 throw;
             }
         }

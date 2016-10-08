@@ -1,5 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Wilcommerce.Core.Common.Domain.Repository;
+using Wilcommerce.Core.Common.Events.User;
 
 namespace Wilcommerce.Core.Common.Commands.User.Handlers
 {
@@ -7,9 +9,12 @@ namespace Wilcommerce.Core.Common.Commands.User.Handlers
     {
         public IRepository Repository { get; }
 
-        public ChangeUserNameCommandHandler(IRepository repository)
+        public Infrastructure.IEventBus EventBus { get; }
+
+        public ChangeUserNameCommandHandler(IRepository repository, Infrastructure.IEventBus eventBus)
         {
             Repository = repository;
+            EventBus = eventBus;
         }
 
         public async Task Handle(ChangeUserNameCommand command)
@@ -20,9 +25,15 @@ namespace Wilcommerce.Core.Common.Commands.User.Handlers
                 user.ChangeName(command.Name);
 
                 await Repository.SaveChangesAsync();
+
+                var @event = new UserNameChangedEvent(command.UserId, command.Name);
+                EventBus.RaiseEvent(@event);
             }
-            catch 
+            catch (Exception ex)
             {
+                var @event = new UserNameNotChangedEvent(command.UserId, command.Name, ex.Message);
+                EventBus.RaiseEvent(@event);
+
                 throw;
             }
         }
