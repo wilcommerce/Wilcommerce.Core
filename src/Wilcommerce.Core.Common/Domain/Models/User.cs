@@ -21,37 +21,32 @@ namespace Wilcommerce.Core.Common.Domain.Models
         /// <summary>
         /// Get or set the user full name
         /// </summary>
-        public string Name { get; set; }
+        public string Name { get; protected set; }
 
         /// <summary>
         /// Get or set the user email
         /// </summary>
-        public string Email { get; set; }
-
-        /// <summary>
-        /// Get or set the user username
-        /// </summary>
-        public string Username { get; set; }
+        public string Email { get; protected set; }
 
         /// <summary>
         /// Get or set the user password
         /// </summary>
-        public string Password { get; set; }
+        public string Password { get; protected set; }
 
         /// <summary>
         /// Get or set the user role
         /// </summary>
-        public Roles Role { get; set; }
+        public Roles Role { get; protected set; }
 
         /// <summary>
         /// Get or set the user profile image
         /// </summary>
-        public Image ProfileImage { get; set; }
+        public Image ProfileImage { get; protected set; }
 
         /// <summary>
         /// Get or set whether the user is active
         /// </summary>
-        public bool IsActive { get; set; }
+        public bool IsActive { get; protected set; }
 
         /// <summary>
         /// Get or set the date and time of when the user was disabled
@@ -67,7 +62,7 @@ namespace Wilcommerce.Core.Common.Domain.Models
         public virtual void Enable()
         {
             IsActive = true;
-            if(DisabledOn != null)
+            if (DisabledOn != null)
             {
                 DisabledOn = null;
             }
@@ -82,6 +77,71 @@ namespace Wilcommerce.Core.Common.Domain.Models
             DisabledOn = DateTime.Now;
         }
 
+        /// <summary>
+        /// Change the user's name
+        /// </summary>
+        /// <param name="name">The new user's name</param>
+        public virtual void ChangeName(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+            {
+                throw new ArgumentNullException("name");
+            }
+
+            Name = name;
+        }
+
+        /// <summary>
+        /// Change the user's email
+        /// </summary>
+        /// <param name="email">The new user's email</param>
+        public virtual void ChangeEmail(string email)
+        {
+            if (string.IsNullOrEmpty(email))
+            {
+                throw new ArgumentNullException("email");
+            }
+
+            Email = email;
+        }
+
+        /// <summary>
+        /// Change the user's password
+        /// </summary>
+        /// <param name="password">The new user's password</param>
+        public virtual void ChangePassword(string password)
+        {
+            if (string.IsNullOrEmpty(password))
+            {
+                throw new ArgumentNullException("password");
+            }
+
+            Password = password;
+        }
+
+        /// <summary>
+        /// Change the user's role
+        /// </summary>
+        /// <param name="role">The new user's role</param>
+        public virtual void ChangeRole(Roles role)
+        {
+            Role = role;
+        }
+
+        /// <summary>
+        /// Set the user's profile image
+        /// </summary>
+        /// <param name="profileImage">The profile image to set</param>
+        public virtual void SetProfileImage(Image profileImage)
+        {
+            if (profileImage == null)
+            {
+                throw new ArgumentNullException("profile image");
+            }
+
+            ProfileImage = profileImage;
+        }
+
         #endregion
 
         #region Factory Methods
@@ -92,16 +152,16 @@ namespace Wilcommerce.Core.Common.Domain.Models
         /// <param name="username">The user username</param>
         /// <param name="password">The user password</param>
         /// <returns>The created administrator user</returns>
-        public static User CreateAsAdministrator(string name, string username, string password)
+        public static User CreateAsAdministrator(string name, string email, string password)
         {
             if (string.IsNullOrEmpty(name))
             {
                 throw new ArgumentNullException("name");
             }
 
-            if (string.IsNullOrEmpty(username))
+            if (string.IsNullOrEmpty(email))
             {
-                throw new ArgumentNullException("username");
+                throw new ArgumentNullException("email");
             }
 
             if (string.IsNullOrEmpty(password))
@@ -113,7 +173,7 @@ namespace Wilcommerce.Core.Common.Domain.Models
             {
                 Id = Guid.NewGuid(),
                 Name = name,
-                Username = username,
+                Email = email,
                 Password = password,
                 Role = Roles.ADMINISTRATOR
             };
@@ -128,16 +188,16 @@ namespace Wilcommerce.Core.Common.Domain.Models
         /// <param name="username">The user username</param>
         /// <param name="password">The user password</param>
         /// <returns>The created customer user</returns>
-        public static User CreateAsCustomer(string name, string username, string password)
+        public static User CreateAsCustomer(string name, string email, string password)
         {
             if (string.IsNullOrEmpty(name))
             {
                 throw new ArgumentNullException("name");
             }
 
-            if (string.IsNullOrEmpty(username))
+            if (string.IsNullOrEmpty(email))
             {
-                throw new ArgumentNullException("username");
+                throw new ArgumentNullException("email");
             }
 
             if (string.IsNullOrEmpty(password))
@@ -149,7 +209,7 @@ namespace Wilcommerce.Core.Common.Domain.Models
             {
                 Id = Guid.NewGuid(),
                 Name = name,
-                Username = username,
+                Email = email,
                 Password = password,
                 Role = Roles.CUSTOMER
             };

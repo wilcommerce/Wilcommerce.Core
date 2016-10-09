@@ -1,0 +1,41 @@
+﻿using System;
+using System.Threading.Tasks;
+using Wilcommerce.Core.Common.Domain.Repository;
+using Wilcommerce.Core.Common.Events.User;
+
+namespace Wilcommerce.Core.Common.Commands.User.Handlers
+{
+    public class SetUserProfileCommandHandler : Interfaces.ISetUserProfileCommandHandler
+    {
+        public IRepository Repository { get; }
+
+        public Infrastructure.IEventBus EventBus { get; }
+
+        public SetUserProfileCommandHandler(IRepository repository, Infrastructure.IEventBus eventBus)
+        {
+            Repository = repository;
+            EventBus = eventBus;
+        }
+
+        public async Task Handle(SetUserProfileCommand command)
+        {
+            try
+            {
+                var user = await Repository.GetByKeyAsync<Domain.Models.User>(command.UserId);
+                user.SetProfileImage(command.ProfileImage);
+
+                await Repository.SaveChangesAsync();
+
+                var @event = new UserProfileImageChangedEvent(command.UserId);
+                EventBus.RaiseEvent(@event);
+            }
+            catch (Exception ex)
+            {
+                var @event = new UserProfileImageNotChangedEvent(command.UserId, ex.Message);
+                EventBus.RaiseEvent(@event);
+
+                throw;
+            }
+        }
+    }
+}
