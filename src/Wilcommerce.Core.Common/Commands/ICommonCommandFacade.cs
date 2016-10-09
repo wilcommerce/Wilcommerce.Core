@@ -137,18 +137,58 @@ namespace Wilcommerce.Core.Common.Commands
         /// <returns></returns>
         Task CreateNewAdministrator(string name, string email, string password);
 
+        /// <summary>
+        /// Enable the specified user
+        /// </summary>
+        /// <param name="userId">The user's id</param>
+        /// <returns></returns>
         Task EnableUser(Guid userId);
 
+        /// <summary>
+        /// Disable the specified user
+        /// </summary>
+        /// <param name="userId">The user's id</param>
+        /// <returns></returns>
         Task DisableUser(Guid userId);
 
+        /// <summary>
+        /// Change the user's name
+        /// </summary>
+        /// <param name="userId">The user's id</param>
+        /// <param name="name">The new name</param>
+        /// <returns></returns>
         Task ChangeUserName(Guid userId, string name);
 
+        /// <summary>
+        /// Change the user's email
+        /// </summary>
+        /// <param name="userId">The user's id</param>
+        /// <param name="email">The new email</param>
+        /// <returns></returns>
         Task ChangeUserEmail(Guid userId, string email);
 
+        /// <summary>
+        /// Change the user's password
+        /// </summary>
+        /// <param name="userId">The user's id</param>
+        /// <param name="password">The new password</param>
+        /// <returns></returns>
         Task ChangeUserPassword(Guid userId, string password);
 
+        /// <summary>
+        /// Change the user's role
+        /// </summary>
+        /// <param name="userId">The user's id</param>
+        /// <param name="role">The new role</param>
+        /// <returns></returns>
         Task ChangeUserRole(Guid userId, Domain.Models.User.Roles role);
 
+        /// <summary>
+        /// Set the user's profile image
+        /// </summary>
+        /// <param name="userId">The user's id</param>
+        /// <param name="image">The profile image</param>
+        /// <returns></returns>
         Task SetProfileImage(Guid userId, Image image);
         #endregion
     }

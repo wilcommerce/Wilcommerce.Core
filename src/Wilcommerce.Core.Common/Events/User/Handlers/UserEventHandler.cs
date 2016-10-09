@@ -1,5 +1,4 @@
-﻿using System;
-using Wilcommerce.Core.Infrastructure;
+﻿using Wilcommerce.Core.Infrastructure;
 
 namespace Wilcommerce.Core.Common.Events.User.Handlers
 {

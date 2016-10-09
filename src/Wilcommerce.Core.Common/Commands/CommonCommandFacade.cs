@@ -376,6 +376,13 @@ namespace Wilcommerce.Core.Common.Commands
             }
         }
 
+        /// <summary>
+        /// Create a new administrator user
+        /// </summary>
+        /// <param name="name">The user's name</param>
+        /// <param name="username">The user's email</param>
+        /// <param name="password">The user's password</param>
+        /// <returns></returns>
         public async Task CreateNewAdministrator(string name, string email, string password)
         {
             try
@@ -394,6 +401,11 @@ namespace Wilcommerce.Core.Common.Commands
             }
         }
 
+        /// <summary>
+        /// Enable the specified user
+        /// </summary>
+        /// <param name="userId">The user's id</param>
+        /// <returns></returns>
         public async Task EnableUser(Guid userId)
         {
             try
@@ -407,6 +419,11 @@ namespace Wilcommerce.Core.Common.Commands
             }
         }
 
+        /// <summary>
+        /// Disable the specified user
+        /// </summary>
+        /// <param name="userId">The user's id</param>
+        /// <returns></returns>
         public async Task DisableUser(Guid userId)
         {
             try
@@ -420,6 +437,12 @@ namespace Wilcommerce.Core.Common.Commands
             }
         }
 
+        /// <summary>
+        /// Change the user's name
+        /// </summary>
+        /// <param name="userId">The user's id</param>
+        /// <param name="name">The new name</param>
+        /// <returns></returns>
         public async Task ChangeUserName(Guid userId, string name)
         {
             try
@@ -433,6 +456,12 @@ namespace Wilcommerce.Core.Common.Commands
             }
         }
 
+        /// <summary>
+        /// Change the user's email
+        /// </summary>
+        /// <param name="userId">The user's id</param>
+        /// <param name="email">The new email</param>
+        /// <returns></returns>
         public async Task ChangeUserEmail(Guid userId, string email)
         {
             try
@@ -446,6 +475,12 @@ namespace Wilcommerce.Core.Common.Commands
             }
         }
 
+        /// <summary>
+        /// Change the user's password
+        /// </summary>
+        /// <param name="userId">The user's id</param>
+        /// <param name="password">The new password</param>
+        /// <returns></returns>
         public async Task ChangeUserPassword(Guid userId, string password)
         {
             try
@@ -459,6 +494,12 @@ namespace Wilcommerce.Core.Common.Commands
             }
         }
 
+        /// <summary>
+        /// Change the user's role
+        /// </summary>
+        /// <param name="userId">The user's id</param>
+        /// <param name="role">The new role</param>
+        /// <returns></returns>
         public async Task ChangeUserRole(Guid userId, Domain.Models.User.Roles role)
         {
             try
@@ -472,6 +513,12 @@ namespace Wilcommerce.Core.Common.Commands
             }
         }
 
+        /// <summary>
+        /// Set the user's profile image
+        /// </summary>
+        /// <param name="userId">The user's id</param>
+        /// <param name="image">The profile image</param>
+        /// <returns></returns>
         public async Task SetProfileImage(Guid userId, Image image)
         {
             try
