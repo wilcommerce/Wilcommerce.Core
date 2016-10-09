@@ -131,7 +131,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
                 "admin"
                 );
 
-            user.Disable();
+            user.Enable();
 
             Assert.Equal(true, user.IsActive);
             Assert.Equal(null, user.DisabledOn);
