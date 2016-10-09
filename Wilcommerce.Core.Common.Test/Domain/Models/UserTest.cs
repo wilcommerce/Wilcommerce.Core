@@ -15,7 +15,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
         {
             var ex = Assert.Throws<ArgumentNullException>(() => User.CreateAsAdministrator(
                 value,
-                "admin",
+                "admin@email.com",
                 "admin"
                 ));
 
@@ -25,7 +25,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
         [Theory]
         [InlineData(null)]
         [InlineData("")]
-        public void AdministratorFactory_Should_Throw_ArgumentNull_Exception_If_Username_IsEmpty(string value)
+        public void AdministratorFactory_Should_Throw_ArgumentNull_Exception_If_Email_IsEmpty(string value)
         {
             var ex = Assert.Throws<ArgumentNullException>(() => User.CreateAsAdministrator(
                 "Administrator",
@@ -33,7 +33,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
                 "admin"
                 ));
 
-            Assert.Equal("username", ex.ParamName);
+            Assert.Equal("email", ex.ParamName);
         }
 
         [Theory]
@@ -43,7 +43,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
         {
             var ex = Assert.Throws<ArgumentNullException>(() => User.CreateAsAdministrator(
                 "Administrator",
-                "admin",
+                "admin@email.com",
                 value
                 ));
 
@@ -55,7 +55,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
         {
             var user = User.CreateAsAdministrator(
                 "Administrator",
-                "admin",
+                "admin@email.com",
                 "admin"
                 );
 
@@ -73,7 +73,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
         {
             var ex = Assert.Throws<ArgumentNullException>(() => User.CreateAsCustomer(
                 value,
-                "customer",
+                "customer@email.com",
                 "customer"
                 ));
 
@@ -83,7 +83,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
         [Theory]
         [InlineData(null)]
         [InlineData("")]
-        public void CustomerFactory_Should_Throw_ArgumentNull_Exception_If_Username_IsEmpty(string value)
+        public void CustomerFactory_Should_Throw_ArgumentNull_Exception_If_Email_IsEmpty(string value)
         {
             var ex = Assert.Throws<ArgumentNullException>(() => User.CreateAsCustomer(
                 "Customer",
@@ -91,7 +91,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
                 "customer"
                 ));
 
-            Assert.Equal("username", ex.ParamName);
+            Assert.Equal("email", ex.ParamName);
         }
 
         [Theory]
@@ -101,7 +101,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
         {
             var ex = Assert.Throws<ArgumentNullException>(() => User.CreateAsCustomer(
                 "Customer",
-                "customer",
+                "customer@email.com",
                 value
                 ));
 
@@ -113,7 +113,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
         {
             var user = User.CreateAsCustomer(
                 "Customer",
-                "customer",
+                "customer@email.com",
                 "customer"
                 );
 
@@ -127,11 +127,11 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
         {
             var user = User.CreateAsAdministrator(
                 "Admin",
-                "admin",
+                "admin@email.com",
                 "admin"
                 );
 
-            user.Enable();
+            user.Disable();
 
             Assert.Equal(true, user.IsActive);
             Assert.Equal(null, user.DisabledOn);
@@ -142,7 +142,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
         {
             var user = User.CreateAsAdministrator(
                 "Admin",
-                "admin",
+                "admin@email.com",
                 "admin"
                 );
 
@@ -150,6 +150,64 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
 
             Assert.Equal(false, user.IsActive);
             Assert.Equal(DateTime.Now.ToString("yyyy-MM-dd HH:mm"), ((DateTime)user.DisabledOn).ToString("yyyy-MM-dd HH:mm"));
+        }
+
+        [Theory]
+        [InlineData("")]
+        [InlineData(null)]
+        public void ChangeName_Should_Throw_ArgumentNullException_If_Name_IsEmpty(string value)
+        {
+            var user = User.CreateAsAdministrator(
+                "Admin",
+                "admin@email.com",
+                "admin"
+                );
+
+            var ex = Assert.Throws<ArgumentNullException>(() => user.ChangeName(value));
+            Assert.Equal("name", ex.ParamName);
+        }
+
+        [Theory]
+        [InlineData("")]
+        [InlineData(null)]
+        public void ChangeEmail_Should_Throw_ArgumentNullException_If_Email_IsEmpty(string value)
+        {
+            var user = User.CreateAsAdministrator(
+                "Admin",
+                "admin@email.com",
+                "admin"
+                );
+
+            var ex = Assert.Throws<ArgumentNullException>(() => user.ChangeEmail(value));
+            Assert.Equal("email", ex.ParamName);
+        }
+
+        [Theory]
+        [InlineData("")]
+        [InlineData(null)]
+        public void ChangePassword_Should_Throw_ArgumentNullException_If_Password_IsEmpty(string value)
+        {
+            var user = User.CreateAsAdministrator(
+                "Admin",
+                "admin@email.com",
+                "admin"
+                );
+
+            var ex = Assert.Throws<ArgumentNullException>(() => user.ChangePassword(value));
+            Assert.Equal("password", ex.ParamName);
+        }
+
+        [Fact]
+        public void SetProfileImage_Should_Throw_ArgumentNullException_If_Image_IsNull()
+        {
+            var user = User.CreateAsAdministrator(
+                "Admin",
+                "admin@email.com",
+                "admin"
+                );
+
+            var ex = Assert.Throws<ArgumentNullException>(() => user.SetProfileImage(null));
+            Assert.Equal("profile image", ex.ParamName);
         }
     }
 }
