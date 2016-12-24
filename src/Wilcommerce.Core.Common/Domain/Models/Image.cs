@@ -5,6 +5,8 @@
     /// </summary>
     public class Image
     {
+        public long Id { get; protected set; }
+
         /// <summary>
         /// Get or set the image data
         /// </summary>

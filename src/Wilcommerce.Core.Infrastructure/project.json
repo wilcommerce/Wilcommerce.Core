@@ -7,7 +7,7 @@
       "imports": "dnxcore50"
     }
   },
-  "version": "1.0.0-beta2",
+  "version": "1.0.0-beta3",
   "packOptions": {
     "iconUrl": "http://www.wilcommerce.com/logo64.png",
     "licenseUrl": "https://github.com/wilcommerce/Wilcommerce.Core/blob/master/LICENSE",
@@ -18,7 +18,6 @@
     },
     "tags": [ "wilcommerce", "ecommerce", "opensource", ".netcore", ".net", "infrastructure" ],
     "owners": [ "Alberto Mori" ],
-    "releaseNotes": "Upgrade to .NET Core 1.0.1, add translatable interfaces",
     "summary": "Wilcommerce Infrastructure library"
   }
 }

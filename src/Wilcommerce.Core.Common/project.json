@@ -2,7 +2,7 @@
   "dependencies": {
     "NETStandard.Library": "1.6.0",
     "Newtonsoft.Json": "9.0.1",
-    "Wilcommerce.Core.Infrastructure": "1.0.0-beta2"
+    "Wilcommerce.Core.Infrastructure": "1.0.0-beta3"
   },
   "frameworks": {
     "netstandard1.6": {
@@ -13,7 +13,7 @@
       }
     }
   },
-  "version": "1.0.0-beta2",
+  "version": "1.0.0-beta3",
   "packOptions": {
     "iconUrl": "http://www.wilcommerce.com/logo64.png",
     "licenseUrl": "https://github.com/wilcommerce/Wilcommerce.Core/blob/master/LICENSE",
@@ -24,7 +24,6 @@
     },
     "tags": [ "wilcommerce", "ecommerce", "opensource", ".netcore", ".net", "core" ],
     "owners": [ "Alberto Mori" ],
-    "releaseNotes": "Upgrade to .NET Core 1.0.1",
     "summary": "Wilcommerce Core library"
   }
 }
