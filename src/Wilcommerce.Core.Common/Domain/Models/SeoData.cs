@@ -5,8 +5,10 @@
     /// </summary>
     public class SeoData
     {
+        public long Id { get; protected set; }
+
         #region General Information
-        
+
         /// <summary>
         /// Get or set the title metatag
         /// </summary>
