@@ -18,6 +18,16 @@ namespace Wilcommerce.Core.Common.Domain.Events
         public DateTime? Timestamp { get; set; }
 
         /// <summary>
+        /// Get or set the id of the aggregate which generate the event
+        /// </summary>
+        public Guid AggregateId { get; set; }
+
+        /// <summary>
+        /// Get or set the type of the aggregate which generate the event
+        /// </summary>
+        public string AggregateType { get; set; }
+
+        /// <summary>
         /// Get or set the type of the event
         /// </summary>
         public string EventType { get; set; }
@@ -71,6 +81,8 @@ namespace Wilcommerce.Core.Common.Domain.Events
             {
                 Id = Guid.NewGuid(),
                 Timestamp = DateTime.Now,
+                AggregateId = @event.AggregateId,
+                AggregateType = @event.AggregateType.ToString(),
                 EventType = typeof(TEvent).ToString(),
                 EventBody = JsonConvert.SerializeObject(@event)
             };

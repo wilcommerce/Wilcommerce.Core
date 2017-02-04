@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Wilcommerce.Core.Common.Domain.Repository;
 using Wilcommerce.Core.Common.Events.User;
 
@@ -29,11 +28,8 @@ namespace Wilcommerce.Core.Common.Commands.User.Handlers
                 var @event = new UserPasswordChangedEvent(command.UserId);
                 EventBus.RaiseEvent(@event);
             }
-            catch (Exception ex)
+            catch 
             {
-                var @event = new UserPasswordNotChangedEvent(command.UserId, ex.Message);
-                EventBus.RaiseEvent(@event);
-
                 throw;
             }
         }

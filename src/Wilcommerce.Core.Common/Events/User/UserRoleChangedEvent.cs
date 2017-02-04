@@ -10,7 +10,7 @@ namespace Wilcommerce.Core.Common.Events.User
         public Domain.Models.User.Roles Role { get; }
 
         public UserRoleChangedEvent(Guid userId, Domain.Models.User.Roles role)
-            : base()
+            : base(userId, typeof(Domain.Models.User))
         {
             UserId = userId;
             Role = role;

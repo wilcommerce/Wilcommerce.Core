@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Wilcommerce.Core.Common.Domain.Repository;
 using Wilcommerce.Core.Common.Events.User;
 
@@ -38,16 +37,8 @@ namespace Wilcommerce.Core.Common.Commands.User.Handlers
 
                 EventBus.RaiseEvent(@event);
             }
-            catch (Exception ex)
+            catch 
             {
-                var @event = new AdministratorNotCreatedEvent(
-                    command.Name,
-                    command.Email,
-                    ex.Message
-                    );
-
-                EventBus.RaiseEvent(@event);
-
                 throw;
             }
         }

@@ -8,7 +8,7 @@ namespace Wilcommerce.Core.Common.Events.User
         public Guid UserId { get; }
 
         public UserPasswordChangedEvent(Guid userId)
-            : base()
+            : base(userId, typeof(Domain.Models.User))
         {
             UserId = userId;
         }

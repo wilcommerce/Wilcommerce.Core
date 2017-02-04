@@ -4,19 +4,13 @@ namespace Wilcommerce.Core.Common.Events.User.Handlers
 {
     public class UserEventHandler : 
         IHandleEvent<NewAdministratorCreatedEvent>,
-        IHandleEvent<AdministratorNotCreatedEvent>,
         IHandleEvent<UserEmailChangedEvent>,
-        IHandleEvent<UserEmailNotChangedEvent>,
         IHandleEvent<UserPasswordChangedEvent>,
-        IHandleEvent<UserPasswordNotChangedEvent>,
         IHandleEvent<UserNameChangedEvent>,
-        IHandleEvent<UserNameNotChangedEvent>,
         IHandleEvent<UserRoleChangedEvent>,
-        IHandleEvent<UserRoleNotChangedEvent>,
         IHandleEvent<UserDisabledEvent>,
         IHandleEvent<UserEnabledEvent>,
-        IHandleEvent<UserProfileImageChangedEvent>,
-        IHandleEvent<UserProfileImageNotChangedEvent>
+        IHandleEvent<UserProfileImageChangedEvent>
     {
         public IEventStore EventStore { get; }
 
@@ -37,31 +31,7 @@ namespace Wilcommerce.Core.Common.Events.User.Handlers
             }
         }
 
-        public void Handle(AdministratorNotCreatedEvent @event)
-        {
-            try
-            {
-                EventStore.Save(@event);
-            }
-            catch
-            {
-                throw;
-            }
-        }
-
         public void Handle(UserEmailChangedEvent @event)
-        {
-            try
-            {
-                EventStore.Save(@event);
-            }
-            catch
-            {
-                throw;
-            }
-        }
-
-        public void Handle(UserEmailNotChangedEvent @event)
         {
             try
             {
@@ -85,18 +55,6 @@ namespace Wilcommerce.Core.Common.Events.User.Handlers
             }
         }
 
-        public void Handle(UserPasswordNotChangedEvent @event)
-        {
-            try
-            {
-                EventStore.Save(@event);
-            }
-            catch
-            {
-                throw;
-            }
-        }
-
         public void Handle(UserNameChangedEvent @event)
         {
             try
@@ -109,31 +67,7 @@ namespace Wilcommerce.Core.Common.Events.User.Handlers
             }
         }
 
-        public void Handle(UserNameNotChangedEvent @event)
-        {
-            try
-            {
-                EventStore.Save(@event);
-            }
-            catch
-            {
-                throw;
-            }
-        }
-
         public void Handle(UserRoleChangedEvent @event)
-        {
-            try
-            {
-                EventStore.Save(@event);
-            }
-            catch
-            {
-                throw;
-            }
-        }
-
-        public void Handle(UserRoleNotChangedEvent @event)
         {
             try
             {
@@ -170,18 +104,6 @@ namespace Wilcommerce.Core.Common.Events.User.Handlers
         }
 
         public void Handle(UserProfileImageChangedEvent @event)
-        {
-            try
-            {
-                EventStore.Save(@event);
-            }
-            catch
-            {
-                throw;
-            }
-        }
-
-        public void Handle(UserProfileImageNotChangedEvent @event)
         {
             try
             {

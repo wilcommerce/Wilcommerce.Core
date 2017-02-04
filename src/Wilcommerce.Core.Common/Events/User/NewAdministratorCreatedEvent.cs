@@ -12,7 +12,7 @@ namespace Wilcommerce.Core.Common.Events.User
         public string Email { get; }
 
         public NewAdministratorCreatedEvent(Guid administratorId, string name, string email)
-            : base()
+            : base(administratorId, typeof(Domain.Models.User))
         {
             AdministratorId = administratorId;
             Name = name;
