@@ -10,7 +10,7 @@ namespace Wilcommerce.Core.Common.Events.User
         public string Name { get; }
 
         public UserNameChangedEvent(Guid userId, string name)
-            : base()
+            : base(userId, typeof(Domain.Models.User))
         {
             UserId = userId;
             Name = name;

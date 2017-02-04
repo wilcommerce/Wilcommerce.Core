@@ -8,6 +8,7 @@ namespace Wilcommerce.Core.Common.Events.User
         public Guid UserId { get; }
 
         public UserDisabledEvent(Guid userId)
+            : base(userId, typeof(Domain.Models.User))
         {
             UserId = userId;
         }
