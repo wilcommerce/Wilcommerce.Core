@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <VersionPrefix>1.0.0-beta4</VersionPrefix>
-    <TargetFramework>netstandard1.6</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Wilcommerce.Core.Infrastructure</AssemblyName>
     <PackageId>Wilcommerce.Core.Infrastructure</PackageId>
     <PackageTags>wilcommerce;ecommerce;opensource;.netcore;.net;infrastructure</PackageTags>
@@ -16,6 +16,7 @@
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <Version>1.0.0-rc1</Version>
   </PropertyGroup>
 
 </Project>
