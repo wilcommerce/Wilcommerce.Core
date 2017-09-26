@@ -5,9 +5,9 @@ namespace Wilcommerce.Core.Common.Events.User
 {
     public class UserNameChangedEvent : DomainEvent
     {
-        public Guid UserId { get; }
+        public Guid UserId { get; private set; }
 
-        public string Name { get; }
+        public string Name { get; private set; }
 
         public UserNameChangedEvent(Guid userId, string name)
             : base(userId, typeof(Domain.Models.User))
