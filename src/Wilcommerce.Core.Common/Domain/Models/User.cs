@@ -11,7 +11,7 @@ namespace Wilcommerce.Core.Common.Domain.Models
         /// <summary>
         /// Get or set the user id
         /// </summary>
-        public Guid Id { get; set; }
+        public Guid Id { get; protected set; }
 
         #region Constructor
         protected User() { }

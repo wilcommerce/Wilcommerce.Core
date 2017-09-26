@@ -7,8 +7,6 @@ namespace Wilcommerce.Core.Common.Domain.Models
     /// </summary>
     public class Currency
     {
-        public long Id { get; protected set; }
-
         /// <summary>
         /// Get or set the currency code
         /// </summary>

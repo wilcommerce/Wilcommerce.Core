@@ -11,7 +11,7 @@ namespace Wilcommerce.Core.Common.Domain.Models
         /// <summary>
         /// Get or set the Settings Id
         /// </summary>
-        public Guid Id { get; set; }
+        public Guid Id { get; protected set; }
 
         #region Constructor
         protected GeneralSettings() { }

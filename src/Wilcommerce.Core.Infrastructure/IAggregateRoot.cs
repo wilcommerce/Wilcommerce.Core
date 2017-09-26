@@ -10,6 +10,6 @@ namespace Wilcommerce.Core.Infrastructure
         /// <summary>
         /// The aggregate root Id
         /// </summary>
-        Guid Id { get; set; }
+        Guid Id { get; }
     }
 }
