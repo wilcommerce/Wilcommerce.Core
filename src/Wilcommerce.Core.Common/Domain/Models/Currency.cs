@@ -201,6 +201,21 @@ namespace Wilcommerce.Core.Common.Domain.Models
                 Amount = result
             };
         }
+
+        public static bool operator==(Currency c1, Currency c2)
+        {
+            if (ReferenceEquals(c1, null))
+            {
+                return ReferenceEquals(null, c2);
+            }
+
+            return c1.Equals(c2);
+        }
+
+        public static bool operator!=(Currency c1, Currency c2)
+        {
+            return !(c1 == c2);
+        }
         #endregion
 
         #region Methods
@@ -218,6 +233,32 @@ namespace Wilcommerce.Core.Common.Domain.Models
                 Code = this.Code,
                 Amount = amount
             };
+        }
+
+        public override int GetHashCode()
+        {
+            return ToString().GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return $"{Code} {Amount.ToString()}";
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            var currency = obj as Currency;
+            if (currency == null)
+            {
+                return false;
+            }
+
+            return (Code == currency.Code && Amount == currency.Amount);
         }
         #endregion
     }
