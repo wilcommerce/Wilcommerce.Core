@@ -142,12 +142,7 @@ namespace Wilcommerce.Core.Common.Domain.Models
         /// <param name="siteLogo">The site's logo to set</param>
         public virtual void SetSiteLogo(Image siteLogo)
         {
-            if (siteLogo == null)
-            {
-                throw new ArgumentNullException("site logo");
-            }
-
-            SiteLogo = siteLogo;
+            SiteLogo = siteLogo ?? throw new ArgumentNullException("site logo");
         }
 
         /// <summary>
@@ -156,12 +151,7 @@ namespace Wilcommerce.Core.Common.Domain.Models
         /// <param name="seo">The SEO data to set</param>
         public virtual void SetSeoData(SeoData seo)
         {
-            if (seo == null)
-            {
-                throw new ArgumentNullException("seo data");
-            }
-
-            Seo = seo;
+            Seo = seo ?? throw new ArgumentNullException("seo data");
         }
 
         /// <summary>
