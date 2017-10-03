@@ -33,3 +33,6 @@ The Commands namespace contains all the actions available for this package.
 
 ### Events
 The Events namespace contains all the events that could happen.
+
+# Contributing
+If you want to contribute to Wilcommerce please, check the [CONTRIBUTING](CONTRIBUTING.md) file.
