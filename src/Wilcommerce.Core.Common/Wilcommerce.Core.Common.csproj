@@ -21,6 +21,10 @@
     <Description>Wilcommerce common components</Description>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netstandard2.0\Wilcommerce.Core.Common.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\Wilcommerce.Core.Infrastructure\Wilcommerce.Core.Infrastructure.csproj" />
   </ItemGroup>

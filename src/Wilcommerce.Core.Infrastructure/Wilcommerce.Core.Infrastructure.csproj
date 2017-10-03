@@ -21,4 +21,8 @@
     <Description>Wilcommerce infrastructure package</Description>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netstandard2.0\Wilcommerce.Core.Infrastructure.xml</DocumentationFile>
+  </PropertyGroup>
+
 </Project>
