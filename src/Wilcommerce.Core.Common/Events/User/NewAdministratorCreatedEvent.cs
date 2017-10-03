@@ -7,9 +7,9 @@ namespace Wilcommerce.Core.Common.Events.User
     {
         public Guid AdministratorId { get; private set; }
 
-        public string Name { get; }
+        public string Name { get; private set; }
 
-        public string Email { get; }
+        public string Email { get; private set; }
 
         public NewAdministratorCreatedEvent(Guid administratorId, string name, string email)
             : base(administratorId, typeof(Domain.Models.User))
