@@ -51,8 +51,10 @@ namespace Wilcommerce.Core.Common.Domain.Events
                 throw new ArgumentException("The type does not correspond to the saved type");
             }
 
-            var settings = new JsonSerializerSettings();
-            settings.TypeNameHandling = TypeNameHandling.Objects;
+            var settings = new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Objects
+            };
 
             var @event = JsonConvert.DeserializeObject(EventBody, eventType, settings);
             return (dynamic)(@event as DomainEvent);

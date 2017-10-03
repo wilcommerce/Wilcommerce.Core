@@ -5,7 +5,7 @@ namespace Wilcommerce.Core.Common.Events.User
 {
     public class NewAdministratorCreatedEvent : DomainEvent
     {
-        public Guid AdministratorId { get; }
+        public Guid AdministratorId { get; private set; }
 
         public string Name { get; }
 
