@@ -226,7 +226,7 @@ namespace Wilcommerce.Core.Common.Domain.Models
         /// <returns>The currency calculated</returns>
         public virtual Currency Percentage(double percentage)
         {
-            var amount = this.Amount * (percentage / 100.00);
+            var amount = Amount * (percentage / 100.00);
 
             return new Currency
             {

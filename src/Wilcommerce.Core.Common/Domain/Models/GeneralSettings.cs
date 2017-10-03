@@ -128,12 +128,7 @@ namespace Wilcommerce.Core.Common.Domain.Models
         /// <param name="favicon">The favicon to set</param>
         public virtual void SetFavicon(Image favicon)
         {
-            if (favicon == null)
-            {
-                throw new ArgumentNullException("favicon");
-            }
-
-            Favicon = favicon;
+            Favicon = favicon ?? throw new ArgumentNullException("favicon");
         }
 
         /// <summary>

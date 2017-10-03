@@ -14,7 +14,7 @@ If not [create a new issue](https://github.com/wilcommerce/Wilcommerce.Core/issu
 - Make commits of logical units.
 - Check for unnecessary whitespace with ```git diff --check``` before committing.
 - Make sure your commit messages are in the proper format.
-- Write unit tests adding your test class to the **Wilcommerce.Core.Test** project.
+- Write unit tests adding your test class to the **Wilcommerce.Core.Common.Test** project.
 - Run **all** the tests to avoid breaking changes.
 
 ## Submitting Changes
