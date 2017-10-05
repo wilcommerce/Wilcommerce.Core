@@ -202,19 +202,31 @@ namespace Wilcommerce.Core.Common.Domain.Models
             };
         }
 
-        public static bool operator==(Currency c1, Currency c2)
+        /// <summary>
+        /// Compare the two currencies and return true if they're equal
+        /// </summary>
+        /// <param name="firstCurrency">The first currency</param>
+        /// <param name="secondCurrency">The second currency</param>
+        /// <returns>true if the're equal, false otherwise</returns>
+        public static bool operator==(Currency firstCurrency, Currency secondCurrency)
         {
-            if (ReferenceEquals(c1, null))
+            if (ReferenceEquals(firstCurrency, null))
             {
-                return ReferenceEquals(null, c2);
+                return ReferenceEquals(null, secondCurrency);
             }
 
-            return c1.Equals(c2);
+            return firstCurrency.Equals(secondCurrency);
         }
 
-        public static bool operator!=(Currency c1, Currency c2)
+        /// <summary>
+        /// Compare the two currencies and return true if they're not equal
+        /// </summary>
+        /// <param name="firstCurrency">The first currency</param>
+        /// <param name="secondCurrency">The second currency</param>
+        /// <returns>true if the currencies are not equal, false otherwise</returns>
+        public static bool operator!=(Currency firstCurrency, Currency secondCurrency)
         {
-            return !(c1 == c2);
+            return !(firstCurrency == secondCurrency);
         }
         #endregion
 
@@ -235,16 +247,29 @@ namespace Wilcommerce.Core.Common.Domain.Models
             };
         }
 
+        /// <summary>
+        /// Returns the hash code for the object
+        /// </summary>
+        /// <returns></returns>
         public override int GetHashCode()
         {
             return ToString().GetHashCode();
         }
 
+        /// <summary>
+        /// Converts the currency object to a string
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return $"{Code} {Amount.ToString()}";
         }
 
+        /// <summary>
+        /// Determines whether the specified object is equal to the current object.
+        /// </summary>
+        /// <param name="obj">The object to compare</param>
+        /// <returns>true if the specified object is equal to the current, false otherwise</returns>
         public override bool Equals(object obj)
         {
             if (obj == null)

@@ -14,6 +14,9 @@ namespace Wilcommerce.Core.Common.Domain.Models
         public Guid Id { get; protected set; }
 
         #region Constructor
+        /// <summary>
+        /// Construct the user
+        /// </summary>
         protected User() { }
         #endregion
 
@@ -139,12 +142,7 @@ namespace Wilcommerce.Core.Common.Domain.Models
         /// <param name="profileImage">The profile image to set</param>
         public virtual void SetProfileImage(Image profileImage)
         {
-            if (profileImage == null)
-            {
-                throw new ArgumentNullException("profile image");
-            }
-
-            ProfileImage = profileImage;
+            ProfileImage = profileImage ?? throw new ArgumentNullException("profile image");
         }
 
         #endregion
@@ -232,7 +230,14 @@ namespace Wilcommerce.Core.Common.Domain.Models
         /// </summary>
         public enum Roles
         {
+            /// <summary>
+            /// The customer role
+            /// </summary>
             CUSTOMER,
+
+            /// <summary>
+            /// The administrator role
+            /// </summary>
             ADMINISTRATOR
         }
         #endregion

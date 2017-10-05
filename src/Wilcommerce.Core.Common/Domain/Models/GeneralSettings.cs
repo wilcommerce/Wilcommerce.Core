@@ -14,6 +14,9 @@ namespace Wilcommerce.Core.Common.Domain.Models
         public Guid Id { get; protected set; }
 
         #region Constructor
+        /// <summary>
+        /// Construct the general settings
+        /// </summary>
         protected GeneralSettings() { }
         #endregion
 
