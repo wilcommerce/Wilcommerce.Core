@@ -2,6 +2,9 @@
 
 namespace Wilcommerce.Core.Common.Events.User.Handlers
 {
+    /// <summary>
+    /// Handles all the events related to the user
+    /// </summary>
     public class UserEventHandler : 
         IHandleEvent<NewAdministratorCreatedEvent>,
         IHandleEvent<UserEmailChangedEvent>,
@@ -12,13 +15,21 @@ namespace Wilcommerce.Core.Common.Events.User.Handlers
         IHandleEvent<UserEnabledEvent>,
         IHandleEvent<UserProfileImageChangedEvent>
     {
+        /// <summary>
+        /// Get the event store instance
+        /// </summary>
         public IEventStore EventStore { get; }
 
+        /// <summary>
+        /// Construct the event handler
+        /// </summary>
+        /// <param name="eventStore"></param>
         public UserEventHandler(IEventStore eventStore)
         {
             EventStore = eventStore;
         }
 
+        /// <see cref="Infrastructure.IHandleEvent{TEvent}"/>
         public void Handle(NewAdministratorCreatedEvent @event)
         {
             try
@@ -31,6 +42,7 @@ namespace Wilcommerce.Core.Common.Events.User.Handlers
             }
         }
 
+        /// <see cref="Infrastructure.IHandleEvent{TEvent}"/>
         public void Handle(UserEmailChangedEvent @event)
         {
             try
@@ -43,6 +55,7 @@ namespace Wilcommerce.Core.Common.Events.User.Handlers
             }
         }
 
+        /// <see cref="Infrastructure.IHandleEvent{TEvent}"/>
         public void Handle(UserPasswordChangedEvent @event)
         {
             try
@@ -55,6 +68,7 @@ namespace Wilcommerce.Core.Common.Events.User.Handlers
             }
         }
 
+        /// <see cref="Infrastructure.IHandleEvent{TEvent}"/>
         public void Handle(UserNameChangedEvent @event)
         {
             try
@@ -67,6 +81,7 @@ namespace Wilcommerce.Core.Common.Events.User.Handlers
             }
         }
 
+        /// <see cref="Infrastructure.IHandleEvent{TEvent}"/>
         public void Handle(UserRoleChangedEvent @event)
         {
             try
@@ -79,6 +94,7 @@ namespace Wilcommerce.Core.Common.Events.User.Handlers
             }
         }
 
+        /// <see cref="Infrastructure.IHandleEvent{TEvent}"/>
         public void Handle(UserDisabledEvent @event)
         {
             try
@@ -91,6 +107,7 @@ namespace Wilcommerce.Core.Common.Events.User.Handlers
             }
         }
 
+        /// <see cref="Infrastructure.IHandleEvent{TEvent}"/>
         public void Handle(UserEnabledEvent @event)
         {
             try
@@ -103,6 +120,7 @@ namespace Wilcommerce.Core.Common.Events.User.Handlers
             }
         }
 
+        /// <see cref="Infrastructure.IHandleEvent{TEvent}"/>
         public void Handle(UserProfileImageChangedEvent @event)
         {
             try

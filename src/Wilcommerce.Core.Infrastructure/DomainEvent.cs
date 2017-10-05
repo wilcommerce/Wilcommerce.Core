@@ -22,6 +22,11 @@ namespace Wilcommerce.Core.Infrastructure
         /// </summary>
         public Type AggregateType { get; private set; }
 
+        /// <summary>
+        /// Construct the domain event
+        /// </summary>
+        /// <param name="aggregateId"></param>
+        /// <param name="aggregateType"></param>
         public DomainEvent(Guid aggregateId, Type aggregateType)
         {
             AggregateId = aggregateId;
