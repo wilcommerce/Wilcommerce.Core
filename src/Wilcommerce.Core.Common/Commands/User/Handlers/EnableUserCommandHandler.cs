@@ -4,9 +4,7 @@ using Wilcommerce.Core.Common.Events.User;
 
 namespace Wilcommerce.Core.Common.Commands.User.Handlers
 {
-    /// <summary>
-    /// Handles the enabling of the user
-    /// </summary>
+    /// <see cref="Interfaces.IEnableUserCommandHandler"/>
     public class EnableUserCommandHandler : Interfaces.IEnableUserCommandHandler
     {
         /// <summary>

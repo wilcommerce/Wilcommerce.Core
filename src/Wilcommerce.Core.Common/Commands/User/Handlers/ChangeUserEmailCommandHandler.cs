@@ -4,9 +4,7 @@ using Wilcommerce.Core.Common.Events.User;
 
 namespace Wilcommerce.Core.Common.Commands.User.Handlers
 {
-    /// <summary>
-    /// Handles the change of the user email
-    /// </summary>
+    /// <see cref="Interfaces.IChangeUserEmailCommandHandler"/>
     public class ChangeUserEmailCommandHandler : Interfaces.IChangeUserEmailCommandHandler
     {
         /// <summary>

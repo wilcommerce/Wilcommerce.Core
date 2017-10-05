@@ -4,9 +4,7 @@ using Wilcommerce.Core.Common.Events.User;
 
 namespace Wilcommerce.Core.Common.Commands.User.Handlers
 {
-    /// <summary>
-    /// Handles the creation of a new administrator
-    /// </summary>
+    /// <see cref="Interfaces.ICreateNewAdministratorCommandHandler"/>
     public class CreateNewAdministratorCommandHandler : Interfaces.ICreateNewAdministratorCommandHandler
     {
         /// <summary>

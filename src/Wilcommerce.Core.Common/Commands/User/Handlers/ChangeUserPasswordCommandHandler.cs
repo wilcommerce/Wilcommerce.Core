@@ -4,9 +4,7 @@ using Wilcommerce.Core.Common.Events.User;
 
 namespace Wilcommerce.Core.Common.Commands.User.Handlers
 {
-    /// <summary>
-    /// Handles the change of the user password
-    /// </summary>
+    /// <see cref="Interfaces.IChangeUserPasswordCommandHandler"/>
     public class ChangeUserPasswordCommandHandler : Interfaces.IChangeUserPasswordCommandHandler
     {
         /// <summary>

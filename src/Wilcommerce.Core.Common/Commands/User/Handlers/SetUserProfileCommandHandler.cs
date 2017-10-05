@@ -4,9 +4,7 @@ using Wilcommerce.Core.Common.Events.User;
 
 namespace Wilcommerce.Core.Common.Commands.User.Handlers
 {
-    /// <summary>
-    /// Handles the set of the user profile image
-    /// </summary>
+    /// <see cref="Interfaces.ISetUserProfileCommandHandler"/>
     public class SetUserProfileCommandHandler : Interfaces.ISetUserProfileCommandHandler
     {
         /// <summary>

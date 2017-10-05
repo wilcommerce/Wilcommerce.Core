@@ -4,9 +4,7 @@ using Wilcommerce.Core.Common.Events.User;
 
 namespace Wilcommerce.Core.Common.Commands.User.Handlers
 {
-    /// <summary>
-    /// Handles the change of the user role
-    /// </summary>
+    /// <see cref="Interfaces.IChangeUserRoleCommandHandler"/>
     public class ChangeUserRoleCommandHandler : Interfaces.IChangeUserRoleCommandHandler
     {
         /// <summary>
