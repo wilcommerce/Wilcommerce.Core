@@ -3,9 +3,7 @@ using Wilcommerce.Core.Common.Domain.Repository;
 
 namespace Wilcommerce.Core.Common.Commands.GeneralSettings.Handlers
 {
-    /// <summary>
-    /// Handles the change of the site name
-    /// </summary>
+    /// <see cref="Interfaces.IChangeSiteNameCommandHandler"/>
     public class ChangeSiteNameCommandHandler : Interfaces.IChangeSiteNameCommandHandler
     {
         /// <summary>

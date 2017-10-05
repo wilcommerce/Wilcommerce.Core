@@ -3,9 +3,7 @@ using Wilcommerce.Core.Common.Domain.Repository;
 
 namespace Wilcommerce.Core.Common.Commands.GeneralSettings.Handlers
 {
-    /// <summary>
-    /// Handles the language change
-    /// </summary>
+    /// <see cref="Interfaces.IChangeLanguageCommandHandler"/>
     public class ChangeLanguageCommandHandler : Interfaces.IChangeLanguageCommandHandler
     {
         /// <summary>
@@ -16,7 +14,7 @@ namespace Wilcommerce.Core.Common.Commands.GeneralSettings.Handlers
         /// <summary>
         /// Construct the command handler
         /// </summary>
-        /// <param name="repository">The repository instance</param>
+        /// <param name="repository">The repository</param>
         public ChangeLanguageCommandHandler(IRepository repository)
         {
             Repository = repository;
