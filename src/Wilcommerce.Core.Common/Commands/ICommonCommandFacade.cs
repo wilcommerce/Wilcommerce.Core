@@ -132,7 +132,7 @@ namespace Wilcommerce.Core.Common.Commands
         /// Create a new administrator user
         /// </summary>
         /// <param name="name">The user's name</param>
-        /// <param name="username">The user's email</param>
+        /// <param name="email">The user's email</param>
         /// <param name="password">The user's password</param>
         /// <returns></returns>
         Task CreateNewAdministrator(string name, string email, string password);

@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Wilcommerce.Core.Infrastructure</AssemblyName>
+    <PackageId>Wilcommerce.Core.Infrastructure</PackageId>
+    <PackageTags>wilcommerce;ecommerce;opensource;.netcore;.net;infrastructure</PackageTags>
+    <PackageIconUrl>http://www.wilcommerce.com/logo64.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/wilcommerce/Wilcommerce.Core/</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/wilcommerce/Wilcommerce.Core/blob/master/LICENSE</PackageLicenseUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/wilcommerce/Wilcommerce.Core</RepositoryUrl>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <Version>1.0.0-rc1</Version>
+    <Authors>Alberto Mori</Authors>
+    <Description>Wilcommerce infrastructure package</Description>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netstandard2.0\Wilcommerce.Core.Infrastructure.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard2.0\Wilcommerce.Core.Infrastructure.xml</DocumentationFile>
+  </PropertyGroup>
+
+</Project>

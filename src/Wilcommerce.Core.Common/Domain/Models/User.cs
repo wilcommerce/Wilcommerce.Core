@@ -11,9 +11,12 @@ namespace Wilcommerce.Core.Common.Domain.Models
         /// <summary>
         /// Get or set the user id
         /// </summary>
-        public Guid Id { get; set; }
+        public Guid Id { get; protected set; }
 
         #region Constructor
+        /// <summary>
+        /// Construct the user
+        /// </summary>
         protected User() { }
         #endregion
 
@@ -27,6 +30,11 @@ namespace Wilcommerce.Core.Common.Domain.Models
         /// Get or set the user email
         /// </summary>
         public string Email { get; protected set; }
+
+        /// <summary>
+        /// Get or set the username
+        /// </summary>
+        public string Username { get; protected set; }
 
         /// <summary>
         /// Get or set the user password
@@ -134,12 +142,7 @@ namespace Wilcommerce.Core.Common.Domain.Models
         /// <param name="profileImage">The profile image to set</param>
         public virtual void SetProfileImage(Image profileImage)
         {
-            if (profileImage == null)
-            {
-                throw new ArgumentNullException("profile image");
-            }
-
-            ProfileImage = profileImage;
+            ProfileImage = profileImage ?? throw new ArgumentNullException("profile image");
         }
 
         #endregion
@@ -149,7 +152,7 @@ namespace Wilcommerce.Core.Common.Domain.Models
         /// Creates a new administrator user
         /// </summary>
         /// <param name="name">The user full name</param>
-        /// <param name="username">The user username</param>
+        /// <param name="email">The user username</param>
         /// <param name="password">The user password</param>
         /// <returns>The created administrator user</returns>
         public static User CreateAsAdministrator(string name, string email, string password)
@@ -173,6 +176,7 @@ namespace Wilcommerce.Core.Common.Domain.Models
             {
                 Id = Guid.NewGuid(),
                 Name = name,
+                Username = email,
                 Email = email,
                 Password = password,
                 Role = Roles.ADMINISTRATOR
@@ -185,7 +189,7 @@ namespace Wilcommerce.Core.Common.Domain.Models
         /// Creates a new customer user
         /// </summary>
         /// <param name="name">The user full name</param>
-        /// <param name="username">The user username</param>
+        /// <param name="email">The user username</param>
         /// <param name="password">The user password</param>
         /// <returns>The created customer user</returns>
         public static User CreateAsCustomer(string name, string email, string password)
@@ -209,6 +213,7 @@ namespace Wilcommerce.Core.Common.Domain.Models
             {
                 Id = Guid.NewGuid(),
                 Name = name,
+                Username = email,
                 Email = email,
                 Password = password,
                 Role = Roles.CUSTOMER
@@ -225,7 +230,14 @@ namespace Wilcommerce.Core.Common.Domain.Models
         /// </summary>
         public enum Roles
         {
+            /// <summary>
+            /// The customer role
+            /// </summary>
             CUSTOMER,
+
+            /// <summary>
+            /// The administrator role
+            /// </summary>
             ADMINISTRATOR
         }
         #endregion

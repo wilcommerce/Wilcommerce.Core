@@ -7,8 +7,6 @@ namespace Wilcommerce.Core.Common.Domain.Models
     /// </summary>
     public class Currency
     {
-        public long Id { get; protected set; }
-
         /// <summary>
         /// Get or set the currency code
         /// </summary>
@@ -203,6 +201,33 @@ namespace Wilcommerce.Core.Common.Domain.Models
                 Amount = result
             };
         }
+
+        /// <summary>
+        /// Compare the two currencies and return true if they're equal
+        /// </summary>
+        /// <param name="firstCurrency">The first currency</param>
+        /// <param name="secondCurrency">The second currency</param>
+        /// <returns>true if the're equal, false otherwise</returns>
+        public static bool operator==(Currency firstCurrency, Currency secondCurrency)
+        {
+            if (ReferenceEquals(firstCurrency, null))
+            {
+                return ReferenceEquals(null, secondCurrency);
+            }
+
+            return firstCurrency.Equals(secondCurrency);
+        }
+
+        /// <summary>
+        /// Compare the two currencies and return true if they're not equal
+        /// </summary>
+        /// <param name="firstCurrency">The first currency</param>
+        /// <param name="secondCurrency">The second currency</param>
+        /// <returns>true if the currencies are not equal, false otherwise</returns>
+        public static bool operator!=(Currency firstCurrency, Currency secondCurrency)
+        {
+            return !(firstCurrency == secondCurrency);
+        }
         #endregion
 
         #region Methods
@@ -213,13 +238,52 @@ namespace Wilcommerce.Core.Common.Domain.Models
         /// <returns>The currency calculated</returns>
         public virtual Currency Percentage(double percentage)
         {
-            var amount = this.Amount * (percentage / 100.00);
+            var amount = Amount * (percentage / 100.00);
 
             return new Currency
             {
                 Code = this.Code,
                 Amount = amount
             };
+        }
+
+        /// <summary>
+        /// Returns the hash code for the object
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            return ToString().GetHashCode();
+        }
+
+        /// <summary>
+        /// Converts the currency object to a string
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return $"{Code} {Amount.ToString()}";
+        }
+
+        /// <summary>
+        /// Determines whether the specified object is equal to the current object.
+        /// </summary>
+        /// <param name="obj">The object to compare</param>
+        /// <returns>true if the specified object is equal to the current, false otherwise</returns>
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            var currency = obj as Currency;
+            if (currency == null)
+            {
+                return false;
+            }
+
+            return (Code == currency.Code && Amount == currency.Amount);
         }
         #endregion
     }

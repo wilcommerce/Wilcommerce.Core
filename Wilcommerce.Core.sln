@@ -1,22 +1,25 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{46CCE590-AD6F-40F3-898C-287E84D803B1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9B4CA586-E6EC-4C3D-B866-C477E24B3184}"
 	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		CONTRIBUTING.md = CONTRIBUTING.md
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{0460C9CF-60CC-4862-A7CC-DCFD60542656}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Wilcommerce.Core.Infrastructure", "src\Wilcommerce.Core.Infrastructure\Wilcommerce.Core.Infrastructure.xproj", "{AD4A9B0C-A9BB-4167-9DFC-E73C7CC08342}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wilcommerce.Core.Infrastructure", "src\Wilcommerce.Core.Infrastructure\Wilcommerce.Core.Infrastructure.csproj", "{AD4A9B0C-A9BB-4167-9DFC-E73C7CC08342}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Wilcommerce.Core.Common", "src\Wilcommerce.Core.Common\Wilcommerce.Core.Common.xproj", "{2FCDEAE8-985B-4535-BEFC-7A517AE99DEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wilcommerce.Core.Common", "src\Wilcommerce.Core.Common\Wilcommerce.Core.Common.csproj", "{2FCDEAE8-985B-4535-BEFC-7A517AE99DEC}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Wilcommerce.Core.Common.Test", "Wilcommerce.Core.Common.Test\Wilcommerce.Core.Common.Test.xproj", "{256CABC2-2728-433B-A98E-C753922F395A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wilcommerce.Core.Common.Test", "Wilcommerce.Core.Common.Test\Wilcommerce.Core.Common.Test.csproj", "{256CABC2-2728-433B-A98E-C753922F395A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,5 +47,8 @@ Global
 		{AD4A9B0C-A9BB-4167-9DFC-E73C7CC08342} = {46CCE590-AD6F-40F3-898C-287E84D803B1}
 		{2FCDEAE8-985B-4535-BEFC-7A517AE99DEC} = {46CCE590-AD6F-40F3-898C-287E84D803B1}
 		{256CABC2-2728-433B-A98E-C753922F395A} = {0460C9CF-60CC-4862-A7CC-DCFD60542656}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F14AB0EB-6D5C-4399-BC1C-2BDC295DCBF9}
 	EndGlobalSection
 EndGlobal

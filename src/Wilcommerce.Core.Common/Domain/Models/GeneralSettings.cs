@@ -11,9 +11,12 @@ namespace Wilcommerce.Core.Common.Domain.Models
         /// <summary>
         /// Get or set the Settings Id
         /// </summary>
-        public Guid Id { get; set; }
+        public Guid Id { get; protected set; }
 
         #region Constructor
+        /// <summary>
+        /// Construct the general settings
+        /// </summary>
         protected GeneralSettings() { }
         #endregion
 
@@ -128,12 +131,7 @@ namespace Wilcommerce.Core.Common.Domain.Models
         /// <param name="favicon">The favicon to set</param>
         public virtual void SetFavicon(Image favicon)
         {
-            if (favicon == null)
-            {
-                throw new ArgumentNullException("favicon");
-            }
-
-            Favicon = favicon;
+            Favicon = favicon ?? throw new ArgumentNullException("favicon");
         }
 
         /// <summary>
@@ -142,12 +140,7 @@ namespace Wilcommerce.Core.Common.Domain.Models
         /// <param name="siteLogo">The site's logo to set</param>
         public virtual void SetSiteLogo(Image siteLogo)
         {
-            if (siteLogo == null)
-            {
-                throw new ArgumentNullException("site logo");
-            }
-
-            SiteLogo = siteLogo;
+            SiteLogo = siteLogo ?? throw new ArgumentNullException("site logo");
         }
 
         /// <summary>
@@ -156,12 +149,7 @@ namespace Wilcommerce.Core.Common.Domain.Models
         /// <param name="seo">The SEO data to set</param>
         public virtual void SetSeoData(SeoData seo)
         {
-            if (seo == null)
-            {
-                throw new ArgumentNullException("seo data");
-            }
-
-            Seo = seo;
+            Seo = seo ?? throw new ArgumentNullException("seo data");
         }
 
         /// <summary>

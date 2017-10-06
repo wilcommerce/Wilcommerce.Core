@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Wilcommerce.Core.Infrastructure;
+﻿using Wilcommerce.Core.Infrastructure;
 
 namespace Wilcommerce.Core.Common.Commands.GeneralSettings.Handlers.Interfaces
 {
+    /// <summary>
+    /// Handles the setup of the site logo
+    /// </summary>
     public interface ISetupSiteLogoCommandHandler : ICommandHandlerAsync<SetupSiteLogoCommand>
     {
     }

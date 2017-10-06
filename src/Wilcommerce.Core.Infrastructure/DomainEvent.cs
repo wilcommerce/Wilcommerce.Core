@@ -10,18 +10,23 @@ namespace Wilcommerce.Core.Infrastructure
         /// <summary>
         /// The date and time of when the event is fired
         /// </summary>
-        public DateTime FiredOn { get; }
+        public DateTime FiredOn { get; private set; }
 
         /// <summary>
         /// The id of the aggregate which generate the event
         /// </summary>
-        public Guid AggregateId { get; }
+        public Guid AggregateId { get; private set; }
 
         /// <summary>
         /// The type of the aggregate which generate the event
         /// </summary>
-        public Type AggregateType { get; }
+        public Type AggregateType { get; private set; }
 
+        /// <summary>
+        /// Construct the domain event
+        /// </summary>
+        /// <param name="aggregateId"></param>
+        /// <param name="aggregateType"></param>
         public DomainEvent(Guid aggregateId, Type aggregateType)
         {
             AggregateId = aggregateId;

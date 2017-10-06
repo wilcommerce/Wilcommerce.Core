@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using Wilcommerce.Core.Common.Domain.Events;
 using Wilcommerce.Core.Common.Domain.Models;
 
 namespace Wilcommerce.Core.Common.Domain.ReadModels
@@ -18,10 +17,5 @@ namespace Wilcommerce.Core.Common.Domain.ReadModels
         /// Get the list of users
         /// </summary>
         IQueryable<User> Users { get; }
-
-        /// <summary>
-        /// Get the list of events
-        /// </summary>
-        IQueryable<EventWrapper> Events { get; }
     }
 }

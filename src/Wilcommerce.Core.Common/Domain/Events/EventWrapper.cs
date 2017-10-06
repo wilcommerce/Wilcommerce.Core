@@ -4,6 +4,9 @@ using Wilcommerce.Core.Infrastructure;
 
 namespace Wilcommerce.Core.Common.Domain.Events
 {
+    /// <summary>
+    /// A wrapper for a generic domain event
+    /// </summary>
     public class EventWrapper
     {
         #region Properties
@@ -51,8 +54,10 @@ namespace Wilcommerce.Core.Common.Domain.Events
                 throw new ArgumentException("The type does not correspond to the saved type");
             }
 
-            var settings = new JsonSerializerSettings();
-            settings.TypeNameHandling = TypeNameHandling.Objects;
+            var settings = new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Objects
+            };
 
             var @event = JsonConvert.DeserializeObject(EventBody, eventType, settings);
             return (dynamic)(@event as DomainEvent);
@@ -60,6 +65,9 @@ namespace Wilcommerce.Core.Common.Domain.Events
         #endregion
 
         #region Constructor
+        /// <summary>
+        /// Construct the event wrapper
+        /// </summary>
         protected EventWrapper() { }
         #endregion
 
