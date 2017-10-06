@@ -4,6 +4,9 @@ using Wilcommerce.Core.Infrastructure;
 
 namespace Wilcommerce.Core.Common.Domain.Events
 {
+    /// <summary>
+    /// A wrapper for a generic domain event
+    /// </summary>
     public class EventWrapper
     {
         #region Properties
@@ -62,6 +65,9 @@ namespace Wilcommerce.Core.Common.Domain.Events
         #endregion
 
         #region Constructor
+        /// <summary>
+        /// Construct the event wrapper
+        /// </summary>
         protected EventWrapper() { }
         #endregion
 

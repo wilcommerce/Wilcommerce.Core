@@ -14,6 +14,9 @@ namespace Wilcommerce.Core.Common.Domain.Models
         public Guid Id { get; protected set; }
 
         #region Constructor
+        /// <summary>
+        /// Construct the general settings
+        /// </summary>
         protected GeneralSettings() { }
         #endregion
 
@@ -128,12 +131,7 @@ namespace Wilcommerce.Core.Common.Domain.Models
         /// <param name="favicon">The favicon to set</param>
         public virtual void SetFavicon(Image favicon)
         {
-            if (favicon == null)
-            {
-                throw new ArgumentNullException("favicon");
-            }
-
-            Favicon = favicon;
+            Favicon = favicon ?? throw new ArgumentNullException("favicon");
         }
 
         /// <summary>

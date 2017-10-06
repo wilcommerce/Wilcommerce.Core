@@ -13,44 +13,123 @@ namespace Wilcommerce.Core.Common.Commands
     /// </summary>
     public class CommonCommandFacade : ICommonCommandFacade
     {
+        /// <summary>
+        /// Handles the settings setup
+        /// </summary>
         public ISetupSettingsCommandHandler SetupSettingsHandler { get; }
 
+        /// <summary>
+        /// Handles the change of the system currency
+        /// </summary>
         public IChangeCurrencyCommandHandler ChangeCurrencyHandler { get; }
 
+        /// <summary>
+        /// Handles the change of the system language
+        /// </summary>
         public IChangeLanguageCommandHandler ChangeLanguageHandler { get; }
 
+        /// <summary>
+        /// Handles the disabling of site
+        /// </summary>
         public IDisableSiteCommandHandler DisableSiteHandler { get; }
 
+        /// <summary>
+        /// Handles the enabling of site
+        /// </summary>
         public IEnableSiteCommandHandler EnableSiteHandler { get; }
 
+        /// <summary>
+        /// Handles the favicon setup
+        /// </summary>
         public ISetupFaviconCommandHandler SetupFaviconHandler { get; }
 
+        /// <summary>
+        /// Handles the setup of the site logo
+        /// </summary>
         public ISetupSiteLogoCommandHandler SetupSiteLogoHandler { get; }
 
+        /// <summary>
+        /// Handles the setup of the upload folder
+        /// </summary>
         public ISetupUploadFolderCommandHandler SetupUploadFolderHandler { get; }
 
+        /// <summary>
+        /// Handles the change of the user email
+        /// </summary>
         public IChangeEmailCommandHandler ChangeEmailHandler { get; }
 
+        /// <summary>
+        /// Handles the change of the site name
+        /// </summary>
         public IChangeSiteNameCommandHandler ChangeSiteNameHandler { get; }
 
+        /// <summary>
+        /// Handles the set of the SEO data
+        /// </summary>
         public ISetupSeoDataCommandHandler SetSeoDataHandler { get; }
 
+        /// <summary>
+        /// Handles the creation of the an administrator user
+        /// </summary>
         public ICreateNewAdministratorCommandHandler CreateAdministratorHandler { get; }
 
+        /// <summary>
+        /// Handles the enabling of the user
+        /// </summary>
         public IEnableUserCommandHandler EnableUserHandler { get; }
 
+        /// <summary>
+        /// Handles the disabling of the user
+        /// </summary>
         public IDisableUserCommandHandler DisableUserHandler { get; }
 
+        /// <summary>
+        /// Handles the disabling of the user name
+        /// </summary>
         public IChangeUserNameCommandHandler ChangeUserNameHandler { get; }
 
+        /// <summary>
+        /// Handles the change of the user email
+        /// </summary>
         public IChangeUserEmailCommandHandler ChangeUserEmailHandler { get; }
 
+        /// <summary>
+        /// Handles the change of the user password
+        /// </summary>
         public IChangeUserPasswordCommandHandler ChangeUserPasswordHandler { get; }
 
+        /// <summary>
+        /// Handles the change of the user role
+        /// </summary>
         public IChangeUserRoleCommandHandler ChangeUserRoleHandler { get; }
 
+        /// <summary>
+        /// Handles the change of user profile image
+        /// </summary>
         public ISetUserProfileCommandHandler SetUserProfileHandler { get; }
 
+        /// <summary>
+        /// Construct the command facade, injecting all the command handlers
+        /// </summary>
+        /// <param name="setupSettingsHandler"></param>
+        /// <param name="changeCurrencyHandler"></param>
+        /// <param name="changeLanguageHandler"></param>
+        /// <param name="disableSiteHandler"></param>
+        /// <param name="enableSiteHandler"></param>
+        /// <param name="setupFaviconHandler"></param>
+        /// <param name="setupSiteLogoHandler"></param>
+        /// <param name="setupUploadFolderHandler"></param>
+        /// <param name="changeEmailHandler"></param>
+        /// <param name="changeSiteNameHandler"></param>
+        /// <param name="seoDataHandler"></param>
+        /// <param name="createAdministratorHandler"></param>
+        /// <param name="enableUserHandler"></param>
+        /// <param name="disableUserHandler"></param>
+        /// <param name="changeUserNameHandler"></param>
+        /// <param name="changeUserEmailHandler"></param>
+        /// <param name="changeUserPasswordHandler"></param>
+        /// <param name="changeUserRoleHandler"></param>
+        /// <param name="setUserProfileHandler"></param>
         public CommonCommandFacade(
             ISetupSettingsCommandHandler setupSettingsHandler, 
             IChangeCurrencyCommandHandler changeCurrencyHandler,
@@ -380,7 +459,7 @@ namespace Wilcommerce.Core.Common.Commands
         /// Create a new administrator user
         /// </summary>
         /// <param name="name">The user's name</param>
-        /// <param name="username">The user's email</param>
+        /// <param name="email">The user's email</param>
         /// <param name="password">The user's password</param>
         /// <returns></returns>
         public async Task CreateNewAdministrator(string name, string email, string password)
