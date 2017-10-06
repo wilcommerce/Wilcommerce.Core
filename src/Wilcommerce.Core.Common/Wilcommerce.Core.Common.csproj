@@ -5,7 +5,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Wilcommerce.Core.Common</AssemblyName>
     <PackageId>Wilcommerce.Core.Common</PackageId>
-    <PackageTags>wilcommerce;ecommerce;opensource;.netcore;.net;core</PackageTags>
+    <PackageTags>wilcommerce;ecommerce;opensource;.netcore;.net;core;.netstandard</PackageTags>
     <PackageIconUrl>http://www.wilcommerce.com/logo64.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/wilcommerce/Wilcommerce.Core/</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/wilcommerce/Wilcommerce.Core/blob/master/LICENSE</PackageLicenseUrl>
@@ -28,13 +28,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Wilcommerce.Core.Infrastructure\Wilcommerce.Core.Infrastructure.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.4.0" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
     <PackageReference Include="System.Dynamic.Runtime" Version="4.3.0" />
+    <PackageReference Include="Wilcommerce.Core.Infrastructure" Version="1.0.0-rc1" />
   </ItemGroup>
 
 </Project>
