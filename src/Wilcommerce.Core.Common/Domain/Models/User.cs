@@ -194,6 +194,7 @@ namespace Wilcommerce.Core.Common.Domain.Models
         /// <param name="name">The user full name</param>
         /// <param name="email">The user username</param>
         /// <param name="password">The user password</param>
+        /// <param name="passwordHasher">The password hasher instance</param>
         /// <returns>The created customer user</returns>
         public static User CreateAsCustomer(string name, string email, string password, IPasswordHasher<User> passwordHasher)
         {
