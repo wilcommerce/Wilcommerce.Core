@@ -96,7 +96,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
             string message = "This site is under maintenance";
             settings.DisableSite(message);
 
-            Assert.Equal(true, settings.MaintenanceMode);
+            Assert.True(settings.MaintenanceMode);
             Assert.Equal(message, settings.MaintenanceMessage);
         }
 
@@ -115,7 +115,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
 
             settings.EnableSite();
 
-            Assert.Equal(false, settings.MaintenanceMode);
+            Assert.False(settings.MaintenanceMode);
         }
 
         [Theory]
