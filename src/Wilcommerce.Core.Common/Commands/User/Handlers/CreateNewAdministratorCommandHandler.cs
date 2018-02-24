@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
 using Wilcommerce.Core.Common.Domain.Repository;
 using Wilcommerce.Core.Common.Events.User;
 
@@ -18,14 +19,21 @@ namespace Wilcommerce.Core.Common.Commands.User.Handlers
         public Infrastructure.IEventBus EventBus { get; }
 
         /// <summary>
+        /// Get the password hasher service
+        /// </summary>
+        public IPasswordHasher<Domain.Models.User> PasswordHasher { get; }
+
+        /// <summary>
         /// Construct the command handler
         /// </summary>
         /// <param name="repository">The repository</param>
         /// <param name="eventBus">The event bus</param>
-        public CreateNewAdministratorCommandHandler(IRepository repository, Infrastructure.IEventBus eventBus)
+        /// <param name="passwordHasher">The password hasher instance</param>
+        public CreateNewAdministratorCommandHandler(IRepository repository, Infrastructure.IEventBus eventBus, IPasswordHasher<Domain.Models.User> passwordHasher)
         {
             Repository = repository;
             EventBus = eventBus;
+            PasswordHasher = passwordHasher;
         }
 
         /// <summary>
@@ -40,8 +48,8 @@ namespace Wilcommerce.Core.Common.Commands.User.Handlers
                 var administrator = Domain.Models.User.CreateAsAdministrator(
                     command.Name,
                     command.Email,
-                    command.Password
-                    );
+                    command.Password,
+                    PasswordHasher);
 
                 Repository.Add(administrator);
                 await Repository.SaveChangesAsync();

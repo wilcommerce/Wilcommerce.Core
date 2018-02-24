@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using Wilcommerce.Core.Infrastructure;
 
 namespace Wilcommerce.Core.Common.Domain.Models
@@ -154,8 +155,9 @@ namespace Wilcommerce.Core.Common.Domain.Models
         /// <param name="name">The user full name</param>
         /// <param name="email">The user username</param>
         /// <param name="password">The user password</param>
+        /// <param name="passwordHasher">The password hasher instance</param>
         /// <returns>The created administrator user</returns>
-        public static User CreateAsAdministrator(string name, string email, string password)
+        public static User CreateAsAdministrator(string name, string email, string password, IPasswordHasher<User> passwordHasher)
         {
             if (string.IsNullOrEmpty(name))
             {
@@ -178,9 +180,10 @@ namespace Wilcommerce.Core.Common.Domain.Models
                 Name = name,
                 Username = email,
                 Email = email,
-                Password = password,
                 Role = Roles.ADMINISTRATOR
             };
+
+            user.Password = passwordHasher.HashPassword(user, password);
 
             return user;
         }
@@ -192,7 +195,7 @@ namespace Wilcommerce.Core.Common.Domain.Models
         /// <param name="email">The user username</param>
         /// <param name="password">The user password</param>
         /// <returns>The created customer user</returns>
-        public static User CreateAsCustomer(string name, string email, string password)
+        public static User CreateAsCustomer(string name, string email, string password, IPasswordHasher<User> passwordHasher)
         {
             if (string.IsNullOrEmpty(name))
             {
@@ -215,9 +218,10 @@ namespace Wilcommerce.Core.Common.Domain.Models
                 Name = name,
                 Username = email,
                 Email = email,
-                Password = password,
                 Role = Roles.CUSTOMER
             };
+
+            user.Password = passwordHasher.HashPassword(user, password);
 
             return user;
         }
