@@ -1,11 +1,20 @@
 ﻿using Xunit;
 using Wilcommerce.Core.Common.Domain.Models;
 using System;
+using Microsoft.AspNetCore.Identity;
+using Moq;
 
 namespace Wilcommerce.Core.Common.Test.Domain.Models
 {
     public class UserTest
     {
+        private readonly IPasswordHasher<User> _passwordHasher;
+
+        public UserTest()
+        {
+            _passwordHasher = new Mock<IPasswordHasher<User>>().Object;
+        }
+
         #region Administrator Tests
 
         [Theory]
@@ -16,8 +25,8 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
             var ex = Assert.Throws<ArgumentNullException>(() => User.CreateAsAdministrator(
                 value,
                 "admin@email.com",
-                "admin"
-                ));
+                "admin",
+                _passwordHasher));
 
             Assert.Equal("name", ex.ParamName);
         }
@@ -30,8 +39,8 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
             var ex = Assert.Throws<ArgumentNullException>(() => User.CreateAsAdministrator(
                 "Administrator",
                 value,
-                "admin"
-                ));
+                "admin",
+                _passwordHasher));
 
             Assert.Equal("email", ex.ParamName);
         }
@@ -44,8 +53,8 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
             var ex = Assert.Throws<ArgumentNullException>(() => User.CreateAsAdministrator(
                 "Administrator",
                 "admin@email.com",
-                value
-                ));
+                value,
+                _passwordHasher));
 
             Assert.Equal("password", ex.ParamName);
         }
@@ -56,8 +65,8 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
             var user = User.CreateAsAdministrator(
                 "Administrator",
                 "admin@email.com",
-                "admin"
-                );
+                "admin",
+                _passwordHasher);
 
             Assert.Equal(User.Roles.ADMINISTRATOR, user.Role);
         }
@@ -74,8 +83,8 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
             var ex = Assert.Throws<ArgumentNullException>(() => User.CreateAsCustomer(
                 value,
                 "customer@email.com",
-                "customer"
-                ));
+                "customer",
+                _passwordHasher));
 
             Assert.Equal("name", ex.ParamName);
         }
@@ -88,8 +97,8 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
             var ex = Assert.Throws<ArgumentNullException>(() => User.CreateAsCustomer(
                 "Customer",
                 value,
-                "customer"
-                ));
+                "customer",
+                _passwordHasher));
 
             Assert.Equal("email", ex.ParamName);
         }
@@ -102,8 +111,8 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
             var ex = Assert.Throws<ArgumentNullException>(() => User.CreateAsCustomer(
                 "Customer",
                 "customer@email.com",
-                value
-                ));
+                value,
+                _passwordHasher));
 
             Assert.Equal("password", ex.ParamName);
         }
@@ -114,8 +123,8 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
             var user = User.CreateAsCustomer(
                 "Customer",
                 "customer@email.com",
-                "customer"
-                );
+                "customer",
+                _passwordHasher);
 
             Assert.Equal(User.Roles.CUSTOMER, user.Role);
         }
@@ -128,13 +137,13 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
             var user = User.CreateAsAdministrator(
                 "Admin",
                 "admin@email.com",
-                "admin"
-                );
+                "admin",
+                _passwordHasher);
 
             user.Enable();
 
-            Assert.Equal(true, user.IsActive);
-            Assert.Equal(null, user.DisabledOn);
+            Assert.True(user.IsActive);
+            Assert.Null(user.DisabledOn);
         }
 
         [Fact]
@@ -143,12 +152,12 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
             var user = User.CreateAsAdministrator(
                 "Admin",
                 "admin@email.com",
-                "admin"
-                );
+                "admin",
+                _passwordHasher);
 
             user.Disable();
 
-            Assert.Equal(false, user.IsActive);
+            Assert.False(user.IsActive);
             Assert.Equal(DateTime.Now.ToString("yyyy-MM-dd HH:mm"), ((DateTime)user.DisabledOn).ToString("yyyy-MM-dd HH:mm"));
         }
 
@@ -160,8 +169,8 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
             var user = User.CreateAsAdministrator(
                 "Admin",
                 "admin@email.com",
-                "admin"
-                );
+                "admin",
+                _passwordHasher);
 
             var ex = Assert.Throws<ArgumentNullException>(() => user.ChangeName(value));
             Assert.Equal("name", ex.ParamName);
@@ -175,8 +184,8 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
             var user = User.CreateAsAdministrator(
                 "Admin",
                 "admin@email.com",
-                "admin"
-                );
+                "admin",
+                _passwordHasher);
 
             var ex = Assert.Throws<ArgumentNullException>(() => user.ChangeEmail(value));
             Assert.Equal("email", ex.ParamName);
@@ -190,8 +199,8 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
             var user = User.CreateAsAdministrator(
                 "Admin",
                 "admin@email.com",
-                "admin"
-                );
+                "admin",
+                _passwordHasher);
 
             var ex = Assert.Throws<ArgumentNullException>(() => user.ChangePassword(value));
             Assert.Equal("password", ex.ParamName);
@@ -203,8 +212,8 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
             var user = User.CreateAsAdministrator(
                 "Admin",
                 "admin@email.com",
-                "admin"
-                );
+                "admin",
+                _passwordHasher);
 
             var ex = Assert.Throws<ArgumentNullException>(() => user.SetProfileImage(null));
             Assert.Equal("profile image", ex.ParamName);
