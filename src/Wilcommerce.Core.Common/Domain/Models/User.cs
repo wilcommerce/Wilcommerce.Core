@@ -18,7 +18,10 @@ namespace Wilcommerce.Core.Common.Domain.Models
         /// <summary>
         /// Construct the user
         /// </summary>
-        protected User() { }
+        protected User()
+        {
+            ProfileImage = new Image();
+        }
         #endregion
 
         #region Properties

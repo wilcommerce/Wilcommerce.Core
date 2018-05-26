@@ -271,5 +271,44 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
             var ex = Assert.Throws<ArgumentNullException>(() => settings.ChangeEmail(value));
             Assert.Equal("email", ex.ParamName);
         }
+
+        [Fact]
+        public void Constructor_Should_Initialize_Empty_SiteLogo()
+        {
+            var settings = GeneralSettings.Create(
+                "My Ecommerce",
+                "IT",
+                "EUR",
+                "email@email.com"
+                );
+
+            Assert.NotNull(settings.SiteLogo);
+        }
+
+        [Fact]
+        public void Constructor_Should_Initialize_Empty_Favicon()
+        {
+            var settings = GeneralSettings.Create(
+                "My Ecommerce",
+                "IT",
+                "EUR",
+                "email@email.com"
+                );
+
+            Assert.NotNull(settings.Favicon);
+        }
+
+        [Fact]
+        public void Constructor_Should_Initialize_Empty_Seo()
+        {
+            var settings = GeneralSettings.Create(
+                "My Ecommerce",
+                "IT",
+                "EUR",
+                "email@email.com"
+                );
+
+            Assert.NotNull(settings.Seo);
+        }
     }
 }
