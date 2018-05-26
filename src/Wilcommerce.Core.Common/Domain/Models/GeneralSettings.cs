@@ -17,7 +17,12 @@ namespace Wilcommerce.Core.Common.Domain.Models
         /// <summary>
         /// Construct the general settings
         /// </summary>
-        protected GeneralSettings() { }
+        protected GeneralSettings()
+        {
+            Seo = new SeoData();
+            Favicon = new Image();
+            SiteLogo = new Image();
+        }
         #endregion
 
         #region Properties

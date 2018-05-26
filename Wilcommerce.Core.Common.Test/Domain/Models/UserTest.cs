@@ -218,5 +218,17 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
             var ex = Assert.Throws<ArgumentNullException>(() => user.SetProfileImage(null));
             Assert.Equal("profile image", ex.ParamName);
         }
+
+        [Fact]
+        public void Constructor_Should_Initialize_Empty_ProfileImage()
+        {
+            var admin = User.CreateAsAdministrator(
+                "Administrator",
+                "admin@email.com",
+                "admin",
+                _passwordHasher);
+
+            Assert.NotNull(admin.ProfileImage);
+        }
     }
 }
