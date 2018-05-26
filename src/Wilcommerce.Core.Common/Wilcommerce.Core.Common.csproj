@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <VersionPrefix>1.0.0</VersionPrefix>
@@ -14,7 +14,7 @@
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-    <Version>1.0.0-rc2</Version>
+    <Version>1.0.0-rc3</Version>
     <Authors>Alberto Mori</Authors>
     <Description>Wilcommerce common components</Description>
   </PropertyGroup>
