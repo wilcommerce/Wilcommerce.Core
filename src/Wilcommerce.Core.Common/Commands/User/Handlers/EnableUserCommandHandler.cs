@@ -38,7 +38,7 @@ namespace Wilcommerce.Core.Common.Commands.User.Handlers
             try
             {
                 var user = await Repository.GetByKeyAsync<Domain.Models.User>(command.UserId);
-                user.Disable();
+                user.Enable();
 
                 await Repository.SaveChangesAsync();
 

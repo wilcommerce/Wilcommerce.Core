@@ -461,16 +461,17 @@ namespace Wilcommerce.Core.Common.Commands
         /// <param name="name">The user's name</param>
         /// <param name="email">The user's email</param>
         /// <param name="password">The user's password</param>
+        /// <param name="active">Whether the user is active</param>
         /// <returns></returns>
-        public async Task CreateNewAdministrator(string name, string email, string password)
+        public async Task CreateNewAdministrator(string name, string email, string password, bool active)
         {
             try
             {
                 var command = new CreateNewAdministratorCommand(
                     name,
                     email,
-                    password
-                    );
+                    password,
+                    active);
 
                 await CreateAdministratorHandler.Handle(command);
             }

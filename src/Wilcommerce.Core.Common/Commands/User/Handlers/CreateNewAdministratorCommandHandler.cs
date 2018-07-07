@@ -49,6 +49,7 @@ namespace Wilcommerce.Core.Common.Commands.User.Handlers
                     command.Name,
                     command.Email,
                     command.Password,
+                    command.IsActive,
                     PasswordHasher);
 
                 Repository.Add(administrator);

@@ -26,6 +26,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
                 value,
                 "admin@email.com",
                 "admin",
+                true,
                 _passwordHasher));
 
             Assert.Equal("name", ex.ParamName);
@@ -40,6 +41,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
                 "Administrator",
                 value,
                 "admin",
+                true,
                 _passwordHasher));
 
             Assert.Equal("email", ex.ParamName);
@@ -54,6 +56,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
                 "Administrator",
                 "admin@email.com",
                 value,
+                true,
                 _passwordHasher));
 
             Assert.Equal("password", ex.ParamName);
@@ -66,6 +69,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
                 "Administrator",
                 "admin@email.com",
                 "admin",
+                true,
                 _passwordHasher);
 
             Assert.Equal(User.Roles.ADMINISTRATOR, user.Role);
@@ -138,6 +142,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
                 "Admin",
                 "admin@email.com",
                 "admin",
+                false,
                 _passwordHasher);
 
             user.Enable();
@@ -153,6 +158,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
                 "Admin",
                 "admin@email.com",
                 "admin",
+                true,
                 _passwordHasher);
 
             user.Disable();
@@ -170,6 +176,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
                 "Admin",
                 "admin@email.com",
                 "admin",
+                true,
                 _passwordHasher);
 
             var ex = Assert.Throws<ArgumentNullException>(() => user.ChangeName(value));
@@ -185,6 +192,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
                 "Admin",
                 "admin@email.com",
                 "admin",
+                true,
                 _passwordHasher);
 
             var ex = Assert.Throws<ArgumentNullException>(() => user.ChangeEmail(value));
@@ -200,6 +208,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
                 "Admin",
                 "admin@email.com",
                 "admin",
+                true,
                 _passwordHasher);
 
             var ex = Assert.Throws<ArgumentNullException>(() => user.ChangePassword(value));
@@ -213,6 +222,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
                 "Admin",
                 "admin@email.com",
                 "admin",
+                true,
                 _passwordHasher);
 
             var ex = Assert.Throws<ArgumentNullException>(() => user.SetProfileImage(null));
@@ -226,6 +236,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Models
                 "Administrator",
                 "admin@email.com",
                 "admin",
+                true,
                 _passwordHasher);
 
             Assert.NotNull(admin.ProfileImage);

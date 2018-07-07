@@ -158,9 +158,10 @@ namespace Wilcommerce.Core.Common.Domain.Models
         /// <param name="name">The user full name</param>
         /// <param name="email">The user username</param>
         /// <param name="password">The user password</param>
+        /// <param name="active">Whether the user is active</param>
         /// <param name="passwordHasher">The password hasher instance</param>
         /// <returns>The created administrator user</returns>
-        public static User CreateAsAdministrator(string name, string email, string password, IPasswordHasher<User> passwordHasher)
+        public static User CreateAsAdministrator(string name, string email, string password, bool active, IPasswordHasher<User> passwordHasher)
         {
             if (string.IsNullOrEmpty(name))
             {
@@ -183,7 +184,8 @@ namespace Wilcommerce.Core.Common.Domain.Models
                 Name = name,
                 Username = email,
                 Email = email,
-                Role = Roles.ADMINISTRATOR
+                Role = Roles.ADMINISTRATOR,
+                IsActive = active
             };
 
             user.Password = passwordHasher.HashPassword(user, password);
