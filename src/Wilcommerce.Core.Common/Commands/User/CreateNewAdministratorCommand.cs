@@ -23,16 +23,23 @@ namespace Wilcommerce.Core.Common.Commands.User
         public string Password { get; }
 
         /// <summary>
+        /// Get whether the administrator is active
+        /// </summary>
+        public bool IsActive { get; }
+
+        /// <summary>
         /// Construct the command
         /// </summary>
         /// <param name="name">The adminsitrator name</param>
         /// <param name="email">The adminsitrator email</param>
         /// <param name="password">The adminsitrator password</param>
-        public CreateNewAdministratorCommand(string name, string email, string password)
+        /// <param name="isActive">Whether the user is active</param>
+        public CreateNewAdministratorCommand(string name, string email, string password, bool isActive)
         {
             Name = name;
             Email = email;
             Password = password;
+            IsActive = isActive;
         }
     }
 }
