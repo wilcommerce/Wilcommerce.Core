@@ -2,8 +2,6 @@
 using System.Threading.Tasks;
 using Wilcommerce.Core.Common.Commands.GeneralSettings;
 using Wilcommerce.Core.Common.Commands.GeneralSettings.Handlers.Interfaces;
-using Wilcommerce.Core.Common.Commands.User;
-using Wilcommerce.Core.Common.Commands.User.Handlers.Interfaces;
 using Wilcommerce.Core.Common.Domain.Models;
 
 namespace Wilcommerce.Core.Common.Commands
@@ -69,46 +67,6 @@ namespace Wilcommerce.Core.Common.Commands
         public ISetupSeoDataCommandHandler SetSeoDataHandler { get; }
 
         /// <summary>
-        /// Handles the creation of the an administrator user
-        /// </summary>
-        public ICreateNewAdministratorCommandHandler CreateAdministratorHandler { get; }
-
-        /// <summary>
-        /// Handles the enabling of the user
-        /// </summary>
-        public IEnableUserCommandHandler EnableUserHandler { get; }
-
-        /// <summary>
-        /// Handles the disabling of the user
-        /// </summary>
-        public IDisableUserCommandHandler DisableUserHandler { get; }
-
-        /// <summary>
-        /// Handles the disabling of the user name
-        /// </summary>
-        public IChangeUserNameCommandHandler ChangeUserNameHandler { get; }
-
-        /// <summary>
-        /// Handles the change of the user email
-        /// </summary>
-        public IChangeUserEmailCommandHandler ChangeUserEmailHandler { get; }
-
-        /// <summary>
-        /// Handles the change of the user password
-        /// </summary>
-        public IChangeUserPasswordCommandHandler ChangeUserPasswordHandler { get; }
-
-        /// <summary>
-        /// Handles the change of the user role
-        /// </summary>
-        public IChangeUserRoleCommandHandler ChangeUserRoleHandler { get; }
-
-        /// <summary>
-        /// Handles the change of user profile image
-        /// </summary>
-        public ISetUserProfileCommandHandler SetUserProfileHandler { get; }
-
-        /// <summary>
         /// Construct the command facade, injecting all the command handlers
         /// </summary>
         /// <param name="setupSettingsHandler"></param>
@@ -141,15 +99,7 @@ namespace Wilcommerce.Core.Common.Commands
             ISetupUploadFolderCommandHandler setupUploadFolderHandler,
             IChangeEmailCommandHandler changeEmailHandler,
             IChangeSiteNameCommandHandler changeSiteNameHandler,
-            ISetupSeoDataCommandHandler seoDataHandler,
-            ICreateNewAdministratorCommandHandler createAdministratorHandler,
-            IEnableUserCommandHandler enableUserHandler,
-            IDisableUserCommandHandler disableUserHandler,
-            IChangeUserNameCommandHandler changeUserNameHandler,
-            IChangeUserEmailCommandHandler changeUserEmailHandler,
-            IChangeUserPasswordCommandHandler changeUserPasswordHandler,
-            IChangeUserRoleCommandHandler changeUserRoleHandler,
-            ISetUserProfileCommandHandler setUserProfileHandler)
+            ISetupSeoDataCommandHandler seoDataHandler)
         {
             SetupSettingsHandler = setupSettingsHandler;
             ChangeCurrencyHandler = changeCurrencyHandler;
@@ -162,14 +112,6 @@ namespace Wilcommerce.Core.Common.Commands
             ChangeEmailHandler = changeEmailHandler;
             ChangeSiteNameHandler = changeSiteNameHandler;
             SetSeoDataHandler = seoDataHandler;
-            CreateAdministratorHandler = createAdministratorHandler;
-            EnableUserHandler = enableUserHandler;
-            DisableUserHandler = disableUserHandler;
-            ChangeUserNameHandler = changeUserNameHandler;
-            ChangeUserEmailHandler = changeUserEmailHandler;
-            ChangeUserPasswordHandler = changeUserPasswordHandler;
-            ChangeUserRoleHandler = changeUserRoleHandler;
-            SetUserProfileHandler = setUserProfileHandler;
         }
 
         /// <summary>
@@ -448,163 +390,6 @@ namespace Wilcommerce.Core.Common.Commands
                     );
 
                 await ChangeSiteNameHandler.Handle(command);
-            }
-            catch 
-            {
-                throw;
-            }
-        }
-
-        /// <summary>
-        /// Create a new administrator user
-        /// </summary>
-        /// <param name="name">The user's name</param>
-        /// <param name="email">The user's email</param>
-        /// <param name="password">The user's password</param>
-        /// <param name="active">Whether the user is active</param>
-        /// <returns></returns>
-        public async Task CreateNewAdministrator(string name, string email, string password, bool active)
-        {
-            try
-            {
-                var command = new CreateNewAdministratorCommand(
-                    name,
-                    email,
-                    password,
-                    active);
-
-                await CreateAdministratorHandler.Handle(command);
-            }
-            catch 
-            {
-                throw;
-            }
-        }
-
-        /// <summary>
-        /// Enable the specified user
-        /// </summary>
-        /// <param name="userId">The user's id</param>
-        /// <returns></returns>
-        public async Task EnableUser(Guid userId)
-        {
-            try
-            {
-                var command = new EnableUserCommand(userId);
-                await EnableUserHandler.Handle(command);
-            }
-            catch 
-            {
-                throw;
-            }
-        }
-
-        /// <summary>
-        /// Disable the specified user
-        /// </summary>
-        /// <param name="userId">The user's id</param>
-        /// <returns></returns>
-        public async Task DisableUser(Guid userId)
-        {
-            try
-            {
-                var command = new DisableUserCommand(userId);
-                await DisableUserHandler.Handle(command);
-            }
-            catch 
-            {
-                throw;
-            }
-        }
-
-        /// <summary>
-        /// Change the user's name
-        /// </summary>
-        /// <param name="userId">The user's id</param>
-        /// <param name="name">The new name</param>
-        /// <returns></returns>
-        public async Task ChangeUserName(Guid userId, string name)
-        {
-            try
-            {
-                var command = new ChangeUserNameCommand(userId, name);
-                await ChangeUserNameHandler.Handle(command);
-            }
-            catch
-            {
-                throw;
-            }
-        }
-
-        /// <summary>
-        /// Change the user's email
-        /// </summary>
-        /// <param name="userId">The user's id</param>
-        /// <param name="email">The new email</param>
-        /// <returns></returns>
-        public async Task ChangeUserEmail(Guid userId, string email)
-        {
-            try
-            {
-                var command = new ChangeUserEmailCommand(userId, email);
-                await ChangeUserEmailHandler.Handle(command);
-            }
-            catch 
-            {
-                throw;
-            }
-        }
-
-        /// <summary>
-        /// Change the user's password
-        /// </summary>
-        /// <param name="userId">The user's id</param>
-        /// <param name="password">The new password</param>
-        /// <returns></returns>
-        public async Task ChangeUserPassword(Guid userId, string password)
-        {
-            try
-            {
-                var command = new ChangeUserPasswordCommand(userId, password);
-                await ChangeUserPasswordHandler.Handle(command);
-            }
-            catch 
-            {
-                throw;
-            }
-        }
-
-        /// <summary>
-        /// Change the user's role
-        /// </summary>
-        /// <param name="userId">The user's id</param>
-        /// <param name="role">The new role</param>
-        /// <returns></returns>
-        public async Task ChangeUserRole(Guid userId, Domain.Models.User.Roles role)
-        {
-            try
-            {
-                var command = new ChangeUserRoleCommand(userId, role);
-                await ChangeUserRoleHandler.Handle(command);
-            }
-            catch 
-            {
-                throw;
-            }
-        }
-
-        /// <summary>
-        /// Set the user's profile image
-        /// </summary>
-        /// <param name="userId">The user's id</param>
-        /// <param name="image">The profile image</param>
-        /// <returns></returns>
-        public async Task SetProfileImage(Guid userId, Image image)
-        {
-            try
-            {
-                var command = new SetUserProfileCommand(userId, image);
-                await SetUserProfileHandler.Handle(command);
             }
             catch 
             {

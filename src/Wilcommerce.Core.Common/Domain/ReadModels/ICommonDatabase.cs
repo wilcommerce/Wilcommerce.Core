@@ -12,10 +12,5 @@ namespace Wilcommerce.Core.Common.Domain.ReadModels
         /// Get the list of settings
         /// </summary>
         IQueryable<GeneralSettings> Settings { get; }
-
-        /// <summary>
-        /// Get the list of users
-        /// </summary>
-        IQueryable<User> Users { get; }
     }
 }
