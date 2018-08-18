@@ -80,14 +80,6 @@ namespace Wilcommerce.Core.Common.Commands
         /// <param name="changeEmailHandler"></param>
         /// <param name="changeSiteNameHandler"></param>
         /// <param name="seoDataHandler"></param>
-        /// <param name="createAdministratorHandler"></param>
-        /// <param name="enableUserHandler"></param>
-        /// <param name="disableUserHandler"></param>
-        /// <param name="changeUserNameHandler"></param>
-        /// <param name="changeUserEmailHandler"></param>
-        /// <param name="changeUserPasswordHandler"></param>
-        /// <param name="changeUserRoleHandler"></param>
-        /// <param name="setUserProfileHandler"></param>
         public CommonCommandFacade(
             ISetupSettingsCommandHandler setupSettingsHandler, 
             IChangeCurrencyCommandHandler changeCurrencyHandler,

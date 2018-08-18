@@ -2,7 +2,6 @@
 using Wilcommerce.Core.Common.Domain.Events;
 using System;
 using Wilcommerce.Core.Infrastructure;
-using Wilcommerce.Core.Common.Domain.Models;
 
 namespace Wilcommerce.Core.Common.Test.Domain.Events
 {
@@ -13,7 +12,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Events
             public string Value { get; private set; }
 
             public FakeEvent(string value)
-                : base(Guid.NewGuid(), typeof(User))
+                : base(Guid.NewGuid(), typeof(IAggregateRoot))
             {
                 this.Value = value;
             }
@@ -27,7 +26,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Events
         public class AnotherEvent : DomainEvent
         {
             public AnotherEvent()
-                : base(Guid.NewGuid(), typeof(User))
+                : base(Guid.NewGuid(), typeof(IAggregateRoot))
             {
 
             }
