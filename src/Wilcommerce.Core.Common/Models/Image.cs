@@ -1,4 +1,4 @@
-﻿namespace Wilcommerce.Core.Common.Domain.Models
+﻿namespace Wilcommerce.Core.Common.Models
 {
     /// <summary>
     /// Represents an Image

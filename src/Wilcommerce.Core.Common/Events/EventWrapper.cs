@@ -2,7 +2,7 @@
 using System;
 using Wilcommerce.Core.Infrastructure;
 
-namespace Wilcommerce.Core.Common.Domain.Events
+namespace Wilcommerce.Core.Common.Events
 {
     /// <summary>
     /// A wrapper for a generic domain event
@@ -51,7 +51,7 @@ namespace Wilcommerce.Core.Common.Domain.Events
         {
             if(eventType.ToString() != EventType)
             {
-                throw new ArgumentException("The type does not correspond to the saved type");
+                throw new ArgumentException("The type does not correspond to the saved type", nameof(eventType));
             }
 
             var settings = new JsonSerializerSettings
@@ -80,9 +80,9 @@ namespace Wilcommerce.Core.Common.Domain.Events
         /// <returns>The created event wrapper</returns>
         public static EventWrapper Wrap<TEvent>(TEvent @event) where TEvent : DomainEvent
         {
-            if(@event == null)
+            if (@event == null)
             {
-                throw new ArgumentNullException("event");
+                throw new ArgumentNullException(nameof(@event));
             }
 
             var eventWrapper = new EventWrapper

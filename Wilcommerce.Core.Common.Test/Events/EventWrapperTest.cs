@@ -1,10 +1,9 @@
 ﻿using Xunit;
-using Wilcommerce.Core.Common.Domain.Events;
+using Wilcommerce.Core.Common.Events;
 using System;
 using Wilcommerce.Core.Infrastructure;
-using Wilcommerce.Core.Common.Domain.Models;
 
-namespace Wilcommerce.Core.Common.Test.Domain.Events
+namespace Wilcommerce.Core.Common.Test.Events
 {
     public class EventWrapperTest
     {
@@ -13,7 +12,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Events
             public string Value { get; private set; }
 
             public FakeEvent(string value)
-                : base(Guid.NewGuid(), typeof(User))
+                : base(Guid.NewGuid(), typeof(IAggregateRoot))
             {
                 this.Value = value;
             }
@@ -27,7 +26,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Events
         public class AnotherEvent : DomainEvent
         {
             public AnotherEvent()
-                : base(Guid.NewGuid(), typeof(User))
+                : base(Guid.NewGuid(), typeof(IAggregateRoot))
             {
 
             }
@@ -36,10 +35,10 @@ namespace Wilcommerce.Core.Common.Test.Domain.Events
         [Fact]
         public void EventWrapper_Should_Throw_ArgumentNullException_If_Event_IsNull()
         {
-            DomainEvent ev = null;
-            var ex = Assert.Throws<ArgumentNullException>(() => EventWrapper.Wrap(ev));
+            DomainEvent @event = null;
+            var ex = Assert.Throws<ArgumentNullException>(() => EventWrapper.Wrap(@event));
 
-            Assert.Equal("event", ex.ParamName);
+            Assert.Equal(nameof(@event), ex.ParamName);
         }
 
         [Fact]
@@ -49,7 +48,7 @@ namespace Wilcommerce.Core.Common.Test.Domain.Events
             var wrapper = EventWrapper.Wrap(ev);
 
             var ex = Assert.Throws<ArgumentException>(() => wrapper.GetEventData(typeof(AnotherEvent)));
-            Assert.Equal("The type does not correspond to the saved type", ex.Message);
+            Assert.Equal("eventType", ex.ParamName);
         }
 
         [Fact]
