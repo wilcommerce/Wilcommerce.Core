@@ -43,8 +43,8 @@ namespace Wilcommerce.Core.Common.Test.Models
             var ex = Assert.Throws<ArgumentException>(() => (c1 + c2));
             var ex1 = Assert.Throws<ArgumentException>(() => (c2 + c1));
 
-            Assert.Equal("The currency must be greater than or equal to zero", ex.Message);
-            Assert.Equal("The currency must be greater than or equal to zero", ex1.Message);
+            Assert.Equal("firstCurrency", ex.ParamName);
+            Assert.Equal("secondCurrency", ex1.ParamName);
         }
 
         [Fact]
@@ -125,8 +125,8 @@ namespace Wilcommerce.Core.Common.Test.Models
             var ex = Assert.Throws<ArgumentException>(() => (c1 - c2));
             var ex1 = Assert.Throws<ArgumentException>(() => (c2 - c1));
 
-            Assert.Equal("The currency must be greater than or equal to zero", ex.Message);
-            Assert.Equal("The currency must be greater than or equal to zero", ex1.Message);
+            Assert.Equal("firstCurrency", ex.ParamName);
+            Assert.Equal("secondCurrency", ex1.ParamName);
         }
 
         [Fact]
@@ -226,8 +226,8 @@ namespace Wilcommerce.Core.Common.Test.Models
             var ex = Assert.Throws<ArgumentException>(() => (c1 * c2));
             var ex1 = Assert.Throws<ArgumentException>(() => (c2 * c1));
 
-            Assert.Equal("The currency must be greater than or equal to zero", ex.Message);
-            Assert.Equal("The currency must be greater than or equal to zero", ex1.Message);
+            Assert.Equal("firstCurrency", ex.ParamName);
+            Assert.Equal("secondCurrency", ex1.ParamName);
         }
 
         [Fact]
@@ -305,9 +305,9 @@ namespace Wilcommerce.Core.Common.Test.Models
                 Amount = 10
             };
 
-            var ex = Assert.Throws<ArgumentException>(() => (c1 * c2));
+            var ex = Assert.Throws<ArgumentException>(() => (c1 / c2));
 
-            Assert.Equal("The currency must be greater than or equal to zero", ex.Message);
+            Assert.Equal("firstCurrency", ex.ParamName);
         }
 
         [Theory]
@@ -329,7 +329,7 @@ namespace Wilcommerce.Core.Common.Test.Models
 
             var ex = Assert.Throws<ArgumentException>(() => (c1 / c2));
 
-            Assert.Equal("The currency must be greater than to zero", ex.Message);
+            Assert.Equal("secondCurrency", ex.ParamName);
         }
 
         [Fact]

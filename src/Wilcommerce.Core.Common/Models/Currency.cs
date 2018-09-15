@@ -26,24 +26,24 @@ namespace Wilcommerce.Core.Common.Models
         /// <returns>The currency sum</returns>
         public static Currency operator+(Currency firstCurrency, Currency secondCurrency)
         {
-            if(firstCurrency == null)
+            if (firstCurrency == null)
             {
-                throw new ArgumentNullException("firstCurrency");
+                throw new ArgumentNullException(nameof(firstCurrency));
             }
 
-            if(firstCurrency.Amount < 0)
+            if (firstCurrency.Amount < 0)
             {
-                throw new ArgumentException("The currency must be greater than or equal to zero");
+                throw new ArgumentException("The currency must be greater than or equal to zero", nameof(firstCurrency));
             }
 
-            if(secondCurrency == null)
+            if (secondCurrency == null)
             {
-                throw new ArgumentNullException("secondCurrency");
+                throw new ArgumentNullException(nameof(secondCurrency));
             }
 
             if (secondCurrency.Amount < 0)
             {
-                throw new ArgumentException("The currency must be greater than or equal to zero");
+                throw new ArgumentException("The currency must be greater than or equal to zero", nameof(secondCurrency));
             }
 
             if (firstCurrency.Code != secondCurrency.Code)
@@ -74,22 +74,22 @@ namespace Wilcommerce.Core.Common.Models
         {
             if (firstCurrency == null)
             {
-                throw new ArgumentNullException("firstCurrency");
+                throw new ArgumentNullException(nameof(firstCurrency));
             }
 
             if (firstCurrency.Amount < 0)
             {
-                throw new ArgumentException("The currency must be greater than or equal to zero");
+                throw new ArgumentException("The currency must be greater than or equal to zero", nameof(firstCurrency));
             }
 
             if (secondCurrency == null)
             {
-                throw new ArgumentNullException("secondCurrency");
+                throw new ArgumentNullException(nameof(secondCurrency));
             }
 
             if (secondCurrency.Amount < 0)
             {
-                throw new ArgumentException("The currency must be greater than or equal to zero");
+                throw new ArgumentException("The currency must be greater than or equal to zero", nameof(secondCurrency));
             }
 
             if (firstCurrency.Code != secondCurrency.Code)
@@ -120,22 +120,22 @@ namespace Wilcommerce.Core.Common.Models
         {
             if (firstCurrency == null)
             {
-                throw new ArgumentNullException("firstCurrency");
+                throw new ArgumentNullException(nameof(firstCurrency));
             }
 
             if (firstCurrency.Amount < 0)
             {
-                throw new ArgumentException("The currency must be greater than or equal to zero");
+                throw new ArgumentException("The currency must be greater than or equal to zero", nameof(firstCurrency));
             }
 
             if (secondCurrency == null)
             {
-                throw new ArgumentNullException("secondCurrency");
+                throw new ArgumentNullException(nameof(secondCurrency));
             }
 
             if (secondCurrency.Amount < 0)
             {
-                throw new ArgumentException("The currency must be greater than or equal to zero");
+                throw new ArgumentException("The currency must be greater than or equal to zero", nameof(secondCurrency));
             }
 
             if (firstCurrency.Code != secondCurrency.Code)
@@ -144,7 +144,7 @@ namespace Wilcommerce.Core.Common.Models
             }
 
             double result = firstCurrency.Amount * secondCurrency.Amount;
-            if(result < 0)
+            if (result < 0)
             {
                 throw new InvalidOperationException("The result must be greater than or equals to zero");
             }
@@ -166,22 +166,22 @@ namespace Wilcommerce.Core.Common.Models
         {
             if (firstCurrency == null)
             {
-                throw new ArgumentNullException("firstCurrency");
+                throw new ArgumentNullException(nameof(firstCurrency));
             }
 
             if (firstCurrency.Amount < 0)
             {
-                throw new ArgumentException("The currency must be greater than or equal to zero");
+                throw new ArgumentException("The currency must be greater than or equal to zero", nameof(firstCurrency));
             }
 
             if (secondCurrency == null)
             {
-                throw new ArgumentNullException("secondCurrency");
+                throw new ArgumentNullException(nameof(secondCurrency));
             }
 
             if (secondCurrency.Amount <= 0)
             {
-                throw new ArgumentException("The currency must be greater than to zero");
+                throw new ArgumentException("The currency must be greater than or equal to zero", nameof(secondCurrency));
             }
 
             if (firstCurrency.Code != secondCurrency.Code)
