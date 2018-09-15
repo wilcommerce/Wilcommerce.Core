@@ -1,8 +1,8 @@
 ﻿using Xunit;
-using Wilcommerce.Core.Common.Domain.Models;
+using Wilcommerce.Core.Common.Models;
 using System;
 
-namespace Wilcommerce.Core.Common.Test.Domain.Models
+namespace Wilcommerce.Core.Common.Test.Models
 {
     public class CurrencyTest
     {
