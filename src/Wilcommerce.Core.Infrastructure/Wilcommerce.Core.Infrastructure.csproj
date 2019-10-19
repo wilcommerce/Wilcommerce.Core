@@ -6,7 +6,7 @@
     <AssemblyName>Wilcommerce.Core.Infrastructure</AssemblyName>
     <PackageId>Wilcommerce.Core.Infrastructure</PackageId>
     <PackageTags>wilcommerce;ecommerce;opensource;.netcore;.net;infrastructure</PackageTags>
-    <PackageIconUrl>http://www.wilcommerce.com/logo64.png</PackageIconUrl>
+    <PackageIcon>icon.png</PackageIcon>
     <PackageProjectUrl>https://github.com/wilcommerce/Wilcommerce.Core/</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/wilcommerce/Wilcommerce.Core</RepositoryUrl>
@@ -20,6 +20,13 @@
     <PackageDescription>Wilcommerce infrastructure package</PackageDescription>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <None Include="..\..\icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>bin\Debug\netstandard2.0\Wilcommerce.Core.Infrastructure.xml</DocumentationFile>
