@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <VersionPrefix>1.0.0</VersionPrefix>
@@ -8,15 +8,17 @@
     <PackageTags>wilcommerce;ecommerce;opensource;.netcore;.net;infrastructure</PackageTags>
     <PackageIconUrl>http://www.wilcommerce.com/logo64.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/wilcommerce/Wilcommerce.Core/</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/wilcommerce/Wilcommerce.Core/blob/master/LICENSE</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/wilcommerce/Wilcommerce.Core</RepositoryUrl>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-    <Version>1.0.0-rc1</Version>
+    <Version>1.0.0</Version>
     <Authors>Alberto Mori</Authors>
     <Description>Wilcommerce infrastructure package</Description>
+    <Title>Wilcommerce.Core.Infrastructure</Title>
+    <PackageDescription>Wilcommerce infrastructure package</PackageDescription>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
