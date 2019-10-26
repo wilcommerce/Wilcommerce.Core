@@ -39,28 +39,24 @@ namespace Wilcommerce.Core.Common.Events
         /// Get or set the serialized event
         /// </summary>
         public string EventBody { get; set; }
-        #endregion
 
-        #region Methods
         /// <summary>
-        /// Get the deserialized event, based on the specified type
+        /// Get the deserialized event
         /// </summary>
-        /// <param name="eventType">The type of the event to deserialize</param>
-        /// <returns>The deserialized event</returns>
-        public dynamic GetEventData(Type eventType)
+        public dynamic Event 
         {
-            if(eventType.ToString() != EventType)
+            get
             {
-                throw new ArgumentException("The type does not correspond to the saved type", nameof(eventType));
+                var eventType = Type.GetType(this.EventType);
+
+                var settings = new JsonSerializerSettings
+                {
+                    TypeNameHandling = TypeNameHandling.Objects
+                };
+
+                var @event = JsonConvert.DeserializeObject(this.EventBody, eventType, settings);
+                return (dynamic)(@event as DomainEvent);
             }
-
-            var settings = new JsonSerializerSettings
-            {
-                TypeNameHandling = TypeNameHandling.Objects
-            };
-
-            var @event = JsonConvert.DeserializeObject(EventBody, eventType, settings);
-            return (dynamic)(@event as DomainEvent);
         }
         #endregion
 
@@ -85,13 +81,15 @@ namespace Wilcommerce.Core.Common.Events
                 throw new ArgumentNullException(nameof(@event));
             }
 
+            var eventType = @event.GetType();
+
             var eventWrapper = new EventWrapper
             {
                 Id = Guid.NewGuid(),
                 Timestamp = DateTime.Now,
                 AggregateId = @event.AggregateId,
                 AggregateType = @event.AggregateType.ToString(),
-                EventType = typeof(TEvent).ToString(),
+                EventType = $"{eventType.FullName}, {eventType.Assembly.GetName().Name}",
                 EventBody = JsonConvert.SerializeObject(@event)
             };
 
