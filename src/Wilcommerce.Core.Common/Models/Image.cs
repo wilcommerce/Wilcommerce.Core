@@ -1,4 +1,6 @@
-﻿namespace Wilcommerce.Core.Common.Models
+﻿using System.Linq;
+
+namespace Wilcommerce.Core.Common.Models
 {
     /// <summary>
     /// Represents an Image
@@ -43,7 +45,7 @@
                 return false;
             }
 
-            return (MimeType == img.MimeType && Data == img.Data);
+            return (MimeType == img.MimeType && Data.SequenceEqual(img.Data));
         }
         #endregion
 
