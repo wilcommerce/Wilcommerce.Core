@@ -23,7 +23,7 @@ NuGet package is available here [https://www.nuget.org/packages/Wilcommerce.Core
 Contains all the components which are commons to all the other packages.
 
 ### Installation
-NuGet package available here [https://www.nuget.org/packages/Wilcommerce.Core.Common/1.0.0-rc5](https://www.nuget.org/packages/Wilcommerce.Core.Common/1.0.0-rc5)
+NuGet package available here [https://www.nuget.org/packages/Wilcommerce.Core.Common](https://www.nuget.org/packages/Wilcommerce.Core.Common)
 
 ### Domain
 The Domain namespace defines all the models and the components to manage them.
