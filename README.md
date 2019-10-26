@@ -7,7 +7,7 @@ Wilcommerce.Core.Infrastructure is the infrastructure project for Wilcommerce.
 It contains a list of classes and interfaces used for the infrastructure layer for this project.
 
 ### Installation
-NuGet package is available here [https://www.nuget.org/packages/Wilcommerce.Core.Infrastructure/1.0.0-rc1](https://www.nuget.org/packages/Wilcommerce.Core.Infrastructure/1.0.0-rc1)
+NuGet package is available here [https://www.nuget.org/packages/Wilcommerce.Core.Infrastructure](https://www.nuget.org/packages/Wilcommerce.Core.Infrastructure)
 
 ### Elements
 - **IAggregateRoot** is the interface which represents an Aggregate root.
@@ -23,7 +23,7 @@ NuGet package is available here [https://www.nuget.org/packages/Wilcommerce.Core
 Contains all the components which are commons to all the other packages.
 
 ### Installation
-NuGet package available here [https://www.nuget.org/packages/Wilcommerce.Core.Common/1.0.0-rc5](https://www.nuget.org/packages/Wilcommerce.Core.Common/1.0.0-rc5)
+NuGet package available here [https://www.nuget.org/packages/Wilcommerce.Core.Common](https://www.nuget.org/packages/Wilcommerce.Core.Common)
 
 ### Domain
 The Domain namespace defines all the models and the components to manage them.

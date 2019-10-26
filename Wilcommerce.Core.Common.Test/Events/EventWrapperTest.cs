@@ -2,6 +2,7 @@
 using Wilcommerce.Core.Common.Events;
 using System;
 using Wilcommerce.Core.Infrastructure;
+using Newtonsoft.Json;
 
 namespace Wilcommerce.Core.Common.Test.Events
 {
@@ -23,15 +24,6 @@ namespace Wilcommerce.Core.Common.Test.Events
             }
         }
 
-        public class AnotherEvent : DomainEvent
-        {
-            public AnotherEvent()
-                : base(Guid.NewGuid(), typeof(IAggregateRoot))
-            {
-
-            }
-        }
-
         [Fact]
         public void EventWrapper_Should_Throw_ArgumentNullException_If_Event_IsNull()
         {
@@ -42,13 +34,15 @@ namespace Wilcommerce.Core.Common.Test.Events
         }
 
         [Fact]
-        public void EventWrapper_GetEventData_Should_Throw_ArgumentException_If_EventType_IsNot_The_Same()
+        public void EventWrapper_Should_Wrap_The_Specified_Event()
         {
-            var ev = new FakeEvent("value");
-            var wrapper = EventWrapper.Wrap(ev);
+            var @event = new FakeEvent("value");
+            var wrapper = EventWrapper.Wrap(@event);
 
-            var ex = Assert.Throws<ArgumentException>(() => wrapper.GetEventData(typeof(AnotherEvent)));
-            Assert.Equal("eventType", ex.ParamName);
+            Assert.Equal(@event.AggregateId, wrapper.AggregateId);
+            Assert.Equal(@event.AggregateType.ToString(), wrapper.AggregateType);
+            Assert.Equal($"{@event.GetType().FullName}, {@event.GetType().Assembly.GetName().Name}", wrapper.EventType);
+            Assert.Equal(JsonConvert.SerializeObject(@event), wrapper.EventBody);
         }
 
         [Fact]
@@ -57,7 +51,7 @@ namespace Wilcommerce.Core.Common.Test.Events
             var ev = new FakeEvent("value");
             var wrapper = EventWrapper.Wrap(ev);
 
-            var deserialized = wrapper.GetEventData(Type.GetType(wrapper.EventType));
+            var deserialized = wrapper.Event;
 
             Assert.Equal(typeof(FakeEvent), deserialized.GetType());
             Assert.Equal(ev.ToString(), deserialized.ToString());
