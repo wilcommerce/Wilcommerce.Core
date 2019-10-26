@@ -16,6 +16,7 @@
     <Version>1.0.0</Version>
     <Authors>Alberto Mori</Authors>
     <Description>Wilcommerce common components</Description>
+    <Title>Wilcommerce.Core.Common</Title>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
