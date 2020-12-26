@@ -13,32 +13,32 @@ namespace Wilcommerce.Core.Common.Events
         /// <summary>
         /// Get or set the Id of the wrapper
         /// </summary>
-        public Guid Id { get; set; }
+        public Guid Id { get; protected set; }
 
         /// <summary>
         /// Get or set the timestamp of the wrapper
         /// </summary>
-        public DateTime? Timestamp { get; set; }
+        public DateTime? Timestamp { get; protected set; }
 
         /// <summary>
         /// Get or set the id of the aggregate which generate the event
         /// </summary>
-        public Guid AggregateId { get; set; }
+        public Guid AggregateId { get; protected set; }
 
         /// <summary>
         /// Get or set the type of the aggregate which generate the event
         /// </summary>
-        public string AggregateType { get; set; }
+        public string AggregateType { get; protected set; }
 
         /// <summary>
         /// Get or set the type of the event
         /// </summary>
-        public string EventType { get; set; }
+        public string EventType { get; protected set; }
 
         /// <summary>
         /// Get or set the serialized event
         /// </summary>
-        public string EventBody { get; set; }
+        public string EventBody { get; protected set; }
 
         /// <summary>
         /// Get the deserialized event

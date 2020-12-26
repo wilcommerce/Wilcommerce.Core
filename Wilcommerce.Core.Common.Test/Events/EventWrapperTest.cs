@@ -13,7 +13,7 @@ namespace Wilcommerce.Core.Common.Test.Events
             public string Value { get; private set; }
 
             public FakeEvent(string value)
-                : base(Guid.NewGuid(), typeof(IAggregateRoot))
+                : base(Guid.NewGuid(), typeof(IAggregateRoot), Guid.NewGuid().ToString())
             {
                 this.Value = value;
             }
