@@ -26,7 +26,7 @@ namespace Wilcommerce.Core.Common.Models
         /// <returns>The currency sum</returns>
         public static Currency operator+(Currency firstCurrency, Currency secondCurrency)
         {
-            if (firstCurrency == null)
+            if (firstCurrency is null)
             {
                 throw new ArgumentNullException(nameof(firstCurrency));
             }
@@ -36,7 +36,7 @@ namespace Wilcommerce.Core.Common.Models
                 throw new ArgumentException("The currency must be greater than or equal to zero", nameof(firstCurrency));
             }
 
-            if (secondCurrency == null)
+            if (secondCurrency is null)
             {
                 throw new ArgumentNullException(nameof(secondCurrency));
             }
@@ -72,7 +72,7 @@ namespace Wilcommerce.Core.Common.Models
         /// <returns>The currency difference</returns>
         public static Currency operator-(Currency firstCurrency, Currency secondCurrency)
         {
-            if (firstCurrency == null)
+            if (firstCurrency is null)
             {
                 throw new ArgumentNullException(nameof(firstCurrency));
             }
@@ -82,7 +82,7 @@ namespace Wilcommerce.Core.Common.Models
                 throw new ArgumentException("The currency must be greater than or equal to zero", nameof(firstCurrency));
             }
 
-            if (secondCurrency == null)
+            if (secondCurrency is null)
             {
                 throw new ArgumentNullException(nameof(secondCurrency));
             }
@@ -118,7 +118,7 @@ namespace Wilcommerce.Core.Common.Models
         /// <returns>The currency multiplication</returns>
         public static Currency operator*(Currency firstCurrency, Currency secondCurrency)
         {
-            if (firstCurrency == null)
+            if (firstCurrency is null)
             {
                 throw new ArgumentNullException(nameof(firstCurrency));
             }
@@ -128,7 +128,7 @@ namespace Wilcommerce.Core.Common.Models
                 throw new ArgumentException("The currency must be greater than or equal to zero", nameof(firstCurrency));
             }
 
-            if (secondCurrency == null)
+            if (secondCurrency is null)
             {
                 throw new ArgumentNullException(nameof(secondCurrency));
             }
@@ -164,7 +164,7 @@ namespace Wilcommerce.Core.Common.Models
         /// <returns>The currency division</returns>
         public static Currency operator/(Currency firstCurrency, Currency secondCurrency)
         {
-            if (firstCurrency == null)
+            if (firstCurrency is null)
             {
                 throw new ArgumentNullException(nameof(firstCurrency));
             }
@@ -174,7 +174,7 @@ namespace Wilcommerce.Core.Common.Models
                 throw new ArgumentException("The currency must be greater than or equal to zero", nameof(firstCurrency));
             }
 
-            if (secondCurrency == null)
+            if (secondCurrency is null)
             {
                 throw new ArgumentNullException(nameof(secondCurrency));
             }
@@ -224,10 +224,7 @@ namespace Wilcommerce.Core.Common.Models
         /// <param name="firstCurrency">The first currency</param>
         /// <param name="secondCurrency">The second currency</param>
         /// <returns>true if the currencies are not equal, false otherwise</returns>
-        public static bool operator!=(Currency firstCurrency, Currency secondCurrency)
-        {
-            return !(firstCurrency == secondCurrency);
-        }
+        public static bool operator !=(Currency firstCurrency, Currency secondCurrency) => !(firstCurrency == secondCurrency);
         #endregion
 
         #region Methods
@@ -251,19 +248,13 @@ namespace Wilcommerce.Core.Common.Models
         /// Returns the hash code for the object
         /// </summary>
         /// <returns></returns>
-        public override int GetHashCode()
-        {
-            return ToString().GetHashCode();
-        }
+        public override int GetHashCode() => this.ToString().GetHashCode();
 
         /// <summary>
         /// Converts the currency object to a string
         /// </summary>
         /// <returns></returns>
-        public override string ToString()
-        {
-            return $"{Code} {Amount.ToString()}";
-        }
+        public override string ToString() => $"{Code} {Amount}";
 
         /// <summary>
         /// Determines whether the specified object is equal to the current object.
@@ -272,13 +263,7 @@ namespace Wilcommerce.Core.Common.Models
         /// <returns>true if the specified object is equal to the current, false otherwise</returns>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
-
-            var currency = obj as Currency;
-            if (currency == null)
+            if (obj is not Currency currency)
             {
                 return false;
             }

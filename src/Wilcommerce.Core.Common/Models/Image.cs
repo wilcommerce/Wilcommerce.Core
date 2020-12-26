@@ -22,10 +22,7 @@ namespace Wilcommerce.Core.Common.Models
         /// Returns the hash code for the object
         /// </summary>
         /// <returns></returns>
-        public override int GetHashCode()
-        {
-            return Data.GetHashCode();
-        }
+        public override int GetHashCode() => Data.GetHashCode();
 
         /// <summary>
         /// Determines whether the specified object is equal to the current object.
@@ -34,13 +31,7 @@ namespace Wilcommerce.Core.Common.Models
         /// <returns>true if the specified object is equal to the current, false otherwise</returns>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
-
-            var img = obj as Image;
-            if (img == null)
+            if (obj is not Image img)
             {
                 return false;
             }
@@ -72,10 +63,7 @@ namespace Wilcommerce.Core.Common.Models
         /// <param name="img1">The first image</param>
         /// <param name="img2">The second image</param>
         /// <returns>true if the images are not equal, false otherwise</returns>
-        public static bool operator!=(Image img1, Image img2)
-        {
-            return !(img1 == img2);
-        }
+        public static bool operator !=(Image img1, Image img2) => !(img1 == img2);
         #endregion
     }
 }
